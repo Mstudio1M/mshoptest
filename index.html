@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин сувенірів</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eae7dc;
+            color: #333;
+        }
+        header {
+            background-color: #006b6b;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.8em;
+            position: relative;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #004d4d;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        .cart {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.2em;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 10px;
+            color: #333;
+        }
+        .category {
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+        .category.active {
+            display: block;
+        }
+        .category h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+        .product {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 10px;
+            text-align: center;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .product h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .product p {
+            font-size: 1em;
+            margin: 10px 0;
+            color: #555;
+        }
+        .product button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background-color: #ff9933;
+        }
+    </style>
+</head>
+<body>
+
+<header>Магазин сувенірів
+    <div class="cart">🛒 Кошик: <span id="cart-count">0</span></div>
+</header>
+
+<nav>
+    <a onclick="showCategory('new')">Новинки</a>
+    <a onclick="showCategory('keychains')">Брелки</a>
+    <a onclick="showCategory('swords')">Мечі</a>
+    <a onclick="showCategory('figures')">Фігурки</a>
+</nav>
+
+<div id="new" class="category active">
+    <h2>Новинки</h2>
+    <div class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Новинка 1">
+            <h3>Новинка 1</h3>
+            <p>Ціна: 300 грн</p>
+            <button onclick="addToCart()">Купити</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Новинка 2">
+            <h3>Новинка 2</h3>
+            <p>Ціна: 450 грн</p>
+            <button onclick="addToCart()">Купити</button>
+        </div>
+    </div>
+</div>
+
+<div id="keychains" class="category">
+    <h2>Брелки</h2>
+    <div class="products">
+        <!-- Брелки сюди -->
+    </div>
+</div>
+
+<div id="swords" class="category">
+    <h2>Мечі</h2>
+    <div class="products">
+        <!-- Мечі сюди -->
+    </div>
+</div>
+
+<div id="figures" class="category">
+    <h2>Фігурки</h2>
+    <div class="products">
+        <!-- Фігурки сюди -->
+    </div>
+</div>
+
+<script>
+    function showCategory(categoryId) {
+        let categories = document.querySelectorAll('.category');
+        categories.forEach(category => {
+            category.classList.remove('active');
+        });
+        document.getElementById(categoryId).classList.add('active');
+    }
+
+    let cartCount = 0;
+    function addToCart() {
+        cartCount++;
+        document.getElementById('cart-count').textContent = cartCount;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        showCategory('new');
+    });
+</script>
+
+</body>
+</html>

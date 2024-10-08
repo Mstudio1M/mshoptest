@@ -94,6 +94,10 @@
             font-size: 1.5em;
             margin-top: 20px;
         }
+        .cart-item span {
+            font-size: 1em;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -186,7 +190,12 @@
     }
 
     function addToCart(productName, price) {
-        cart.push({ name: productName, price: price });
+        let existingProduct = cart.find(item => item.name === productName);
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cart.push({ name: productName, price: price, quantity: 1 });
+        }
         totalPrice += price;
         updateCart();
     }
@@ -198,7 +207,7 @@
         cart.forEach(item => {
             let cartItemDiv = document.createElement('div');
             cartItemDiv.className = 'cart-item';
-            cartItemDiv.innerHTML = `<h3>${item.name}</h3><p>Ціна: ${item.price} грн</p>`;
+            cartItemDiv.innerHTML = `<h3>${item.name} <span>(${item.quantity} шт.)</span></h3><p>Ціна: ${item.price * item.quantity} грн</p>`;
             cartItemsDiv.appendChild(cartItemDiv);
         });
 
@@ -212,3 +221,4 @@
 
 </body>
 </html>
+

@@ -9,21 +9,19 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #eae7dc;
-            color: #333;
+            background-color: #e6f7ff;
         }
         header {
-            background-color: #006b6b;
+            background-color: #005073;
             color: #fff;
             padding: 15px;
             text-align: center;
-            font-size: 1.8em;
-            position: relative;
+            font-size: 1.5em;
         }
         nav {
             display: flex;
             justify-content: space-around;
-            background-color: #004d4d;
+            background-color: #007a99;
             padding: 10px 0;
         }
         nav a {
@@ -31,19 +29,6 @@
             text-decoration: none;
             font-size: 1.2em;
             cursor: pointer;
-        }
-        nav a:hover {
-            color: #ffcc00;
-        }
-        .cart {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.2em;
-            background-color: #fff;
-            padding: 5px 10px;
-            border-radius: 10px;
-            color: #333;
         }
         .category {
             padding: 20px;
@@ -64,7 +49,7 @@
             padding: 10px;
         }
         .product {
-            background-color: #ffffff;
+            background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             padding: 10px;
@@ -82,10 +67,9 @@
         .product p {
             font-size: 1em;
             margin: 10px 0;
-            color: #555;
         }
         .product button {
-            background-color: #ff6600;
+            background-color: #007a99;
             color: white;
             border: none;
             padding: 10px;
@@ -93,21 +77,35 @@
             cursor: pointer;
         }
         .product button:hover {
-            background-color: #ff9933;
+            background-color: #004d66;
+        }
+        .cart {
+            text-align: left;
+            padding: 20px;
+        }
+        .cart-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .cart-item h3 {
+            font-size: 1.2em;
+        }
+        .cart-total {
+            font-size: 1.5em;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-<header>Магазин сувенірів
-    <div class="cart">🛒 Кошик: <span id="cart-count">0</span></div>
-</header>
+<header>Магазин сувенірів</header>
 
 <nav>
     <a onclick="showCategory('new')">Новинки</a>
     <a onclick="showCategory('keychains')">Брелки</a>
     <a onclick="showCategory('swords')">Мечі</a>
     <a onclick="showCategory('figures')">Фігурки</a>
+    <a onclick="showCategory('cart')">Кошик</a>
 </nav>
 
 <div id="new" class="category active">
@@ -117,13 +115,13 @@
             <img src="https://via.placeholder.com/150" alt="Новинка 1">
             <h3>Новинка 1</h3>
             <p>Ціна: 300 грн</p>
-            <button onclick="addToCart()">Купити</button>
+            <button onclick="addToCart('Новинка 1', 300)">Купити</button>
         </div>
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Новинка 2">
             <h3>Новинка 2</h3>
             <p>Ціна: 450 грн</p>
-            <button onclick="addToCart()">Купити</button>
+            <button onclick="addToCart('Новинка 2', 450)">Купити</button>
         </div>
     </div>
 </div>
@@ -131,25 +129,54 @@
 <div id="keychains" class="category">
     <h2>Брелки</h2>
     <div class="products">
-        <!-- Брелки сюди -->
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Фотоапарат">
+            <h3>Фотоапарат</h3>
+            <p>Ціна: 20 грн</p>
+            <button onclick="addToCart('Фотоапарат', 20)">Купити</button>
+        </div>
+        <!-- Інші товари -->
     </div>
 </div>
 
 <div id="swords" class="category">
     <h2>Мечі</h2>
     <div class="products">
-        <!-- Мечі сюди -->
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Меч 1">
+            <h3>Меч 1</h3>
+            <p>Ціна: 100 грн</p>
+            <button onclick="addToCart('Меч 1', 100)">Купити</button>
+        </div>
+        <!-- Інші товари -->
     </div>
 </div>
 
 <div id="figures" class="category">
     <h2>Фігурки</h2>
     <div class="products">
-        <!-- Фігурки сюди -->
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Фігурка 1">
+            <h3>Фігурка 1</h3>
+            <p>Ціна: 200 грн</p>
+            <button onclick="addToCart('Фігурка 1', 200)">Купити</button>
+        </div>
+        <!-- Інші товари -->
     </div>
 </div>
 
+<div id="cart" class="category">
+    <h2>Кошик</h2>
+    <div class="cart" id="cart-items">
+        <p>Кошик порожній</p>
+    </div>
+    <div class="cart-total" id="cart-total">Загальна сума: 0 грн</div>
+</div>
+
 <script>
+    let cart = [];
+    let totalPrice = 0;
+
     function showCategory(categoryId) {
         let categories = document.querySelectorAll('.category');
         categories.forEach(category => {
@@ -158,10 +185,24 @@
         document.getElementById(categoryId).classList.add('active');
     }
 
-    let cartCount = 0;
-    function addToCart() {
-        cartCount++;
-        document.getElementById('cart-count').textContent = cartCount;
+    function addToCart(productName, price) {
+        cart.push({ name: productName, price: price });
+        totalPrice += price;
+        updateCart();
+    }
+
+    function updateCart() {
+        let cartItemsDiv = document.getElementById('cart-items');
+        cartItemsDiv.innerHTML = '';
+
+        cart.forEach(item => {
+            let cartItemDiv = document.createElement('div');
+            cartItemDiv.className = 'cart-item';
+            cartItemDiv.innerHTML = `<h3>${item.name}</h3><p>Ціна: ${item.price} грн</p>`;
+            cartItemsDiv.appendChild(cartItemDiv);
+        });
+
+        document.getElementById('cart-total').innerHTML = `Загальна сума: ${totalPrice} грн`;
     }
 
     document.addEventListener("DOMContentLoaded", function () {

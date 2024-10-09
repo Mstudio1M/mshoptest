@@ -104,9 +104,9 @@
         }
 
         .cart-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
+            position: absolute;
+            top: 10px;
+            right: 20px;
             background-color: #FFA500;
             color: white;
             border: none;
@@ -138,7 +138,7 @@
 <body>
 
 <!-- Кнопка для перегляду корзини -->
-<button class="cart-button" onclick="toggleCart()">🛒 Переглянути корзину</button>
+<button class="cart-button" onclick="showCategory('cart')">🛒 Корзина</button>
 
 <!-- Розділ для категорій -->
 <div id="categories">
@@ -146,13 +146,6 @@
     <button onclick="showCategory('swords')">Мечі</button>
     <button onclick="showCategory('figures')">Фігурки</button>
     <button onclick="showCategory('new')">Новинки</button>
-</div>
-
-<!-- Корзина -->
-<div class="cart" id="cart" style="display: none;">
-    <h2>Корзина</h2>
-    <div id="cart-items"></div>
-    <p><strong>Загальна сума:</strong> <span id="total-price">0 грн</span></p>
 </div>
 
 <!-- Категорії товарів -->
@@ -210,6 +203,13 @@
     </div>
 </div>
 
+<!-- Категорія корзина -->
+<div id="cart" class="category">
+    <h2>Корзина</h2>
+    <div id="cart-items"></div>
+    <p><strong>Загальна сума:</strong> <span id="total-price">0 грн</span></p>
+</div>
+
 <script>
     let cart = [];
 
@@ -221,17 +221,15 @@
         document.getElementById(categoryId).classList.add('active');
     }
 
-    function toggleCart() {
-        let cartElement = document.getElementById('cart');
-        if (cartElement.style.display === 'none') {
-            cartElement.style.display = 'block';
-        } else {
-            cartElement.style.display = 'none';
-        }
-    }
-
     function addToCart(itemName, itemPrice) {
-        cart.push({ name: itemName, price: itemPrice });
+        let itemInCart = cart.find(item => item.name === itemName);
+
+        if (itemInCart) {
+            itemInCart.quantity++;
+        } else {
+            cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+        }
+
         updateCart();
     }
 
@@ -243,9 +241,9 @@
         cart.forEach(item => {
             let cartItem = document.createElement('div');
             cartItem.classList.add('cart-item');
-            cartItem.innerHTML = `<p>${item.name} - ${item.price} грн</p>`;
+            cartItem.innerHTML = `<p>${item.name} - ${item.price} грн (x${item.quantity})</p>`;
             cartItems.appendChild(cartItem);
-            totalPrice += item.price;
+            totalPrice += item.price * item.quantity;
         });
 
         document.getElementById('total-price').innerText = totalPrice + ' грн';

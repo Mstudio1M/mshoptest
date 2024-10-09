@@ -17,6 +17,12 @@
             color: #333;
         }
         
+        #categories {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
         #categories button {
             background-color: #4CAF50;
             color: white;
@@ -31,11 +37,6 @@
             background-color: #45a049;
         }
 
-        #categories {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
         .product img {
             width: 150px;
             height: 150px;
@@ -105,8 +106,8 @@
 
         .cart-button {
             position: absolute;
-            top: 10px;
-            right: 20px;
+            top: 0;
+            right: 0;
             background-color: #FFA500;
             color: white;
             border: none;
@@ -114,6 +115,7 @@
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-right: 10px;
         }
 
         .cart-button:hover {
@@ -138,10 +140,8 @@
 <body>
 
 <!-- Кнопка для перегляду корзини -->
-<button class="cart-button" onclick="showCategory('cart')">🛒 Корзина</button>
-
-<!-- Розділ для категорій -->
 <div id="categories">
+    <button class="cart-button" onclick="showCategory('cart')">🛒 Корзина</button>
     <button onclick="showCategory('keychains')">Брелки</button>
     <button onclick="showCategory('swords')">Мечі</button>
     <button onclick="showCategory('figures')">Фігурки</button>
@@ -155,7 +155,7 @@
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Новинка 1">
             <h3>Новинка 1</h3>
-            <п>Ціна: 50 грн</п>
+            <p>Ціна: 50 грн</p>
             <button onclick="addToCart('Новинка 1', 50)">Додати в корзину</button>
         </div>
     </div>
@@ -167,13 +167,13 @@
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Фотоапарат">
             <h3>Фотоапарат</h3>
-            <п>Ціна: 20 грн</п>
+            <p>Ціна: 20 грн</p>
             <button onclick="addToCart('Фотоапарат', 20)">Додати в корзину</button>
         </div>
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Молот Тора">
             <h3>Молот Тора</h3>
-            <п>Ціна: 15 грн</п>
+            <p>Ціна: 15 грн</p>
             <button onclick="addToCart('Молот Тора', 15)">Додати в корзину</button>
         </div>
     </div>
@@ -185,7 +185,7 @@
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Меч 1">
             <h3>Меч 1</h3>
-            <п>Ціна: 100 грн</п>
+            <p>Ціна: 100 грн</p>
             <button onclick="addToCart('Меч 1', 100)">Додати в корзину</button>
         </div>
     </div>
@@ -197,7 +197,7 @@
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Фігурка 1">
             <h3>Фігурка 1</h3>
-            <п>Ціна: 200 грн</п>
+            <p>Ціна: 200 грн</p>
             <button onclick="addToCart('Фігурка 1', 200)">Додати в корзину</button>
         </div>
     </div>

@@ -17,6 +17,7 @@
         h2 {
             color: #00ffcc;
             text-shadow: 0 0 10px #00ffcc;
+            text-align: center;
         }
         
         #categories {
@@ -43,16 +44,6 @@
             box-shadow: 0 0 25px #00ffcc, 0 0 50px #00ffcc;
         }
 
-        .product img {
-            width: 150px;
-            height: 150px;
-            display: block;
-            margin: 0 auto;
-            border: 2px solid #00ffcc;
-            border-radius: 8px;
-            box-shadow: 0 0 10px #00ffcc;
-        }
-        
         .product {
             background-color: #1a1a1a;
             border: 2px solid #00ffcc;
@@ -62,8 +53,20 @@
             box-shadow: 0 0 15px #00ffcc;
             text-align: center;
             transition: box-shadow 0.3s ease, transform 0.3s ease;
+            width: calc(50% - 20px); /* 2 товари в рядок */
+            box-sizing: border-box;
         }
         
+        .product img {
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: 0 auto;
+            border: 2px solid #00ffcc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
         .product:hover {
             box-shadow: 0 0 25px #00ffcc;
             transform: translateY(-5px);
@@ -166,9 +169,11 @@
     <button onclick="showCategory('figures')">Фігурки</button>
 </div>
 
+<!-- Заголовок категорії -->
+<h2 id="category-title">Новинки</h2>
+
 <!-- Категорії товарів -->
 <div id="new" class="category active">
-    <h2>Новинки</h2>
     <div class="products">
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Новинка 1">
@@ -176,11 +181,16 @@
             <p>Ціна: 50 грн</p>
             <button onclick="addToCart('Новинка 1', 50)">Додати в корзину</button>
         </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Новинка 2">
+            <h3>Новинка 2</h3>
+            <p>Ціна: 70 грн</p>
+            <button onclick="addToCart('Новинка 2', 70)">Додати в корзину</button>
+        </div>
     </div>
 </div>
 
 <div id="keychains" class="category">
-    <h2>Брелки</h2>
     <div class="products">
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Фотоапарат">
@@ -198,7 +208,6 @@
 </div>
 
 <div id="swords" class="category">
-    <h2>Мечі</h2>
     <div class="products">
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Меч 1">
@@ -206,11 +215,16 @@
             <p>Ціна: 100 грн</p>
             <button onclick="addToCart('Меч 1', 100)">Додати в корзину</button>
         </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Меч 2">
+            <h3>Меч 2</h3>
+            <p>Ціна: 120 грн</p>
+            <button onclick="addToCart('Меч 2', 120)">Додати в корзину</button>
+        </div>
     </div>
 </div>
 
 <div id="figures" class="category">
-    <h2>Фігурки</h2>
     <div class="products">
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Фігурка 1">
@@ -218,30 +232,51 @@
             <p>Ціна: 200 грн</p>
             <button onclick="addToCart('Фігурка 1', 200)">Додати в корзину</button>
         </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Фігурка 2">
+            <h3>Фігурка 2</h3>
+            <p>Ціна: 220 грн</p>
+            <button onclick="addToCart('Фігурка 2', 220)">Додати в корзину</button>
+        </div>
     </div>
 </div>
 
-<!-- Категорія корзина -->
-<div id="cart" class="category">
+<!-- Корзина -->
+<div class="cart" id="cart">
     <h2>Корзина</h2>
     <div id="cart-items"></div>
-    <p><strong>Загальна сума:</strong> <span id="total-price">0 грн</span></p>
+    <p id="total-price">Сума: 0 грн</p>
 </div>
 
 <script>
-    let cart = [];
+    const cart = [];
 
-    function showCategory(categoryId) {
-        let categories = document.querySelectorAll('.category');
-        categories.forEach(category => {
-            category.classList.remove('active');
+    function showCategory(category) {
+        const categories = document.querySelectorAll('.category');
+        const title = document.getElementById('category-title');
+
+        categories.forEach(cat => {
+            cat.classList.remove('active');
         });
-        document.getElementById(categoryId).classList.add('active');
+
+        document.getElementById(category).classList.add('active');
+
+        // Оновлення заголовка категорії
+        if (category === 'new') {
+            title.innerText = 'Новинки';
+        } else if (category === 'keychains') {
+            title.innerText = 'Брелки';
+        } else if (category === 'swords') {
+            title.innerText = 'Мечі';
+        } else if (category === 'figures') {
+            title.innerText = 'Фігурки';
+        } else {
+            title.innerText = 'Корзина';
+        }
     }
 
     function addToCart(itemName, itemPrice) {
-        let itemInCart = cart.find(item => item.name === itemName);
-
+        const itemInCart = cart.find(item => item.name === itemName);
         if (itemInCart) {
             itemInCart.quantity++;
         } else {

@@ -3,129 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин сувенірів</title>
+    <title>Магазин</title>
     <style>
+        /* Оновлений стиль */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
-            background-color: #e6f7ff;
         }
-        header {
-            background-color: #005073;
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-            font-size: 1.5em;
+        
+        h2 {
+            color: #333;
         }
-        nav {
-            display: flex;
-            justify-content: space-around;
-            background-color: #007a99;
-            padding: 10px 0;
-        }
-        nav a {
+        
+        #categories button {
+            background-color: #4CAF50;
             color: white;
-            text-decoration: none;
-            font-size: 1.2em;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .category {
-            padding: 20px;
+        
+        #categories button:hover {
+            background-color: #45a049;
+        }
+
+        #categories {
             text-align: center;
-            display: none;
-        }
-        .category.active {
-            display: block;
-        }
-        .category h2 {
-            font-size: 1.8em;
             margin-bottom: 20px;
         }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            padding: 10px;
-        }
-        .product {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 10px;
-            text-align: center;
-        }
+        
         .product img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: 0 auto;
         }
-        .product h3 {
-            font-size: 1.2em;
-            margin: 10px 0;
+        
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s ease;
         }
-        .product p {
-            font-size: 1em;
-            margin: 10px 0;
+        
+        .product:hover {
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
+        
         .product button {
-            background-color: #007a99;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .product button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-item {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart-item p {
+            margin: 0;
+        }
+        
+        .category { 
+            display: none; 
+        }
+        
+        .category.active { 
+            display: block; 
+        }
+
+        .cart-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #FFA500;
             color: white;
             border: none;
             padding: 10px;
-            border-radius: 5px;
             cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
-        .product button:hover {
-            background-color: #004d66;
+
+        .cart-button:hover {
+            background-color: #FF8C00;
+            transform: translateY(-2px);
         }
-        .cart {
-            text-align: left;
-            padding: 20px;
+
+        /* Стиль для загальної суми */
+        #total-price {
+            color: #4CAF50;
+            font-weight: bold;
         }
-        .cart-item {
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
-        }
-        .cart-item h3 {
-            font-size: 1.2em;
-        }
-        .cart-total {
-            font-size: 1.5em;
-            margin-top: 20px;
-        }
-        .cart-item span {
-            font-size: 1em;
-            color: #666;
+        
+        /* Стиль для продукції */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
 
-<header>Магазин сувенірів</header>
+<!-- Кнопка для перегляду корзини -->
+<button class="cart-button" onclick="toggleCart()">🛒 Переглянути корзину</button>
 
-<nav>
-    <a onclick="showCategory('new')">Новинки</a>
-    <a onclick="showCategory('keychains')">Брелки</a>
-    <a onclick="showCategory('swords')">Мечі</a>
-    <a onclick="showCategory('figures')">Фігурки</a>
-    <a onclick="showCategory('cart')">Кошик</a>
-</nav>
+<!-- Розділ для категорій -->
+<div id="categories">
+    <button onclick="showCategory('new')">Новинки</button>
+    <button onclick="showCategory('keychains')">Брелки</button>
+    <button onclick="showCategory('swords')">Мечі</button>
+    <button onclick="showCategory('figures')">Фігурки</button>
+</div>
 
+<!-- Корзина -->
+<div class="cart" id="cart" style="display: none;">
+    <h2>Корзина</h2>
+    <div id="cart-items"></div>
+    <p><strong>Загальна сума:</strong> <span id="total-price">0 грн</span></p>
+</div>
+
+<!-- Категорії товарів -->
 <div id="new" class="category active">
     <h2>Новинки</h2>
     <div class="products">
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Новинка 1">
             <h3>Новинка 1</h3>
-            <p>Ціна: 300 грн</p>
-            <button onclick="addToCart('Новинка 1', 300)">Купити</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Новинка 2">
-            <h3>Новинка 2</h3>
-            <p>Ціна: 450 грн</p>
-            <button onclick="addToCart('Новинка 2', 450)">Купити</button>
+            <п>Ціна: 50 грн</п>
+            <button onclick="addToCart('Новинка 1', 50)">Додати в корзину</button>
         </div>
     </div>
 </div>
@@ -136,10 +174,15 @@
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Фотоапарат">
             <h3>Фотоапарат</h3>
-            <p>Ціна: 20 грн</p>
-            <button onclick="addToCart('Фотоапарат', 20)">Купити</button>
+            <п>Ціна: 20 грн</п>
+            <button onclick="addToCart('Фотоапарат', 20)">Додати в корзину</button>
         </div>
-        <!-- Інші товари -->
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Молот Тора">
+            <h3>Молот Тора</h3>
+            <п>Ціна: 15 грн</п>
+            <button onclick="addToCart('Молот Тора', 15)">Додати в корзину</button>
+        </div>
     </div>
 </div>
 
@@ -149,10 +192,9 @@
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Меч 1">
             <h3>Меч 1</h3>
-            <p>Ціна: 100 грн</p>
-            <button onclick="addToCart('Меч 1', 100)">Купити</button>
+            <п>Ціна: 100 грн</п>
+            <button onclick="addToCart('Меч 1', 100)">Додати в корзину</button>
         </div>
-        <!-- Інші товари -->
     </div>
 </div>
 
@@ -162,24 +204,14 @@
         <div class="product">
             <img src="https://via.placeholder.com/150" alt="Фігурка 1">
             <h3>Фігурка 1</h3>
-            <p>Ціна: 200 грн</p>
-            <button onclick="addToCart('Фігурка 1', 200)">Купити</button>
+            <п>Ціна: 200 грн</п>
+            <button onclick="addToCart('Фігурка 1', 200)">Додати в корзину</button>
         </div>
-        <!-- Інші товари -->
     </div>
-</div>
-
-<div id="cart" class="category">
-    <h2>Кошик</h2>
-    <div class="cart" id="cart-items">
-        <p>Кошик порожній</p>
-    </div>
-    <div class="cart-total" id="cart-total">Загальна сума: 0 грн</div>
 </div>
 
 <script>
     let cart = [];
-    let totalPrice = 0;
 
     function showCategory(categoryId) {
         let categories = document.querySelectorAll('.category');
@@ -189,31 +221,37 @@
         document.getElementById(categoryId).classList.add('active');
     }
 
-    function addToCart(productName, price) {
-        let existingProduct = cart.find(item => item.name === productName);
-        if (existingProduct) {
-            existingProduct.quantity += 1;
+    function toggleCart() {
+        let cartElement = document.getElementById('cart');
+        if (cartElement.style.display === 'none') {
+            cartElement.style.display = 'block';
         } else {
-            cart.push({ name: productName, price: price, quantity: 1 });
+            cartElement.style.display = 'none';
         }
-        totalPrice += price;
+    }
+
+    function addToCart(itemName, itemPrice) {
+        cart.push({ name: itemName, price: itemPrice });
         updateCart();
     }
 
     function updateCart() {
-        let cartItemsDiv = document.getElementById('cart-items');
-        cartItemsDiv.innerHTML = '';
+        let cartItems = document.getElementById('cart-items');
+        cartItems.innerHTML = ''; // Очистити корзину перед оновленням
+        let totalPrice = 0;
 
         cart.forEach(item => {
-            let cartItemDiv = document.createElement('div');
-            cartItemDiv.className = 'cart-item';
-            cartItemDiv.innerHTML = `<h3>${item.name} <span>(${item.quantity} шт.)</span></h3><p>Ціна: ${item.price * item.quantity} грн</p>`;
-            cartItemsDiv.appendChild(cartItemDiv);
+            let cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `<p>${item.name} - ${item.price} грн</p>`;
+            cartItems.appendChild(cartItem);
+            totalPrice += item.price;
         });
 
-        document.getElementById('cart-total').innerHTML = `Загальна сума: ${totalPrice} грн`;
+        document.getElementById('total-price').innerText = totalPrice + ' грн';
     }
 
+    // Встановлюємо "Новинки" активною категорією при завантаженні сторінки
     document.addEventListener("DOMContentLoaded", function () {
         showCategory('new');
     });
@@ -221,4 +259,3 @@
 
 </body>
 </html>
-

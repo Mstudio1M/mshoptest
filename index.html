@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин</title>
+    <title>Неоновий Магазин</title>
     <style>
-        /* Оновлений стиль */
+        /* Оновлений стиль у неоновому стилі */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #0d0d0d;
             margin: 0;
             padding: 0;
+            color: #fff;
         }
         
         h2 {
-            color: #333;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
         }
         
         #categories {
@@ -24,17 +26,21 @@
         }
         
         #categories button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #00ffcc;
             padding: 10px 20px;
             margin: 10px 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px #00ffcc;
+            box-shadow: 0 0 15px #00ffcc;
         }
         
         #categories button:hover {
-            background-color: #45a049;
+            background-color: #00ffcc;
+            color: #0d0d0d;
+            box-shadow: 0 0 25px #00ffcc, 0 0 50px #00ffcc;
         }
 
         .product img {
@@ -42,48 +48,56 @@
             height: 150px;
             display: block;
             margin: 0 auto;
+            border: 2px solid #00ffcc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #00ffcc;
         }
         
         .product {
-            background-color: white;
-            border: 1px solid #ddd;
+            background-color: #1a1a1a;
+            border: 2px solid #00ffcc;
             padding: 20px;
             margin: 10px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px #00ffcc;
             text-align: center;
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
         
         .product:hover {
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 25px #00ffcc;
+            transform: translateY(-5px);
         }
         
         .product button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #ff00cc;
             padding: 10px 15px;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-shadow: 0 0 10px #ff00cc;
+            box-shadow: 0 0 15px #ff00cc;
         }
         
         .product button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
+            background-color: #ff00cc;
+            color: #0d0d0d;
+            box-shadow: 0 0 25px #ff00cc, 0 0 50px #ff00cc;
+            transform: translateY(-3px);
         }
         
         .cart {
             position: fixed;
             top: 20px;
             right: 20px;
-            background-color: white;
-            border: 1px solid #ddd;
+            background-color: #1a1a1a;
+            border: 2px solid #00ffcc;
             padding: 20px;
             width: 250px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px #00ffcc;
         }
         
         .cart-item {
@@ -108,25 +122,29 @@
             position: absolute;
             top: 0;
             right: 0;
-            background-color: #FFA500;
-            color: white;
-            border: none;
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #ffcc00;
             padding: 10px;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
             margin-right: 10px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            text-shadow: 0 0 10px #ffcc00;
+            box-shadow: 0 0 15px #ffcc00;
         }
 
         .cart-button:hover {
-            background-color: #FF8C00;
-            transform: translateY(-2px);
+            background-color: #ffcc00;
+            color: #0d0d0d;
+            box-shadow: 0 0 25px #ffcc00, 0 0 50px #ffcc00;
         }
 
         /* Стиль для загальної суми */
         #total-price {
-            color: #4CAF50;
+            color: #00ffcc;
             font-weight: bold;
+            text-shadow: 0 0 10px #00ffcc;
         }
         
         /* Стиль для продукції */
@@ -235,25 +253,22 @@
 
     function updateCart() {
         let cartItems = document.getElementById('cart-items');
-        cartItems.innerHTML = ''; // Очистити корзину перед оновленням
         let totalPrice = 0;
 
+        cartItems.innerHTML = '';
+
         cart.forEach(item => {
-            let cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item');
-            cartItem.innerHTML = `<p>${item.name} - ${item.price} грн (x${item.quantity})</p>`;
-            cartItems.appendChild(cartItem);
             totalPrice += item.price * item.quantity;
+            cartItems.innerHTML += `
+                <div class="cart-item">
+                    <p>${item.name} (x${item.quantity})</p>
+                    <p>${item.price * item.quantity} грн</p>
+                </div>
+            `;
         });
 
         document.getElementById('total-price').innerText = totalPrice + ' грн';
     }
-
-    // Встановлюємо "Новинки" активною категорією при завантаженні сторінки
-    document.addEventListener("DOMContentLoaded", function () {
-        showCategory('new');
-    });
 </script>
-
 </body>
 </html>

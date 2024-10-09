@@ -120,7 +120,7 @@
 
         .cart-button {
             position: absolute;
-            top: 0;
+            top: 80px; /* Перемістив кнопку корзини нижче */
             right: 0;
             background-color: transparent;
             color: #fff;
@@ -159,11 +159,11 @@
 
 <!-- Кнопка для перегляду корзини -->
 <div id="categories">
+    <button onclick="showCategory('new')">Новинки</button>
     <button class="cart-button" onclick="showCategory('cart')">🛒 Корзина</button>
     <button onclick="showCategory('keychains')">Брелки</button>
     <button onclick="showCategory('swords')">Мечі</button>
     <button onclick="showCategory('figures')">Фігурки</button>
-    <button onclick="showCategory('new')">Новинки</button>
 </div>
 
 <!-- Категорії товарів -->
@@ -270,5 +270,6 @@
         document.getElementById('total-price').innerText = totalPrice + ' грн';
     }
 </script>
+
 </body>
 </html>

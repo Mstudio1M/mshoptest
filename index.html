@@ -176,16 +176,44 @@
 </head>
 <body>
 
+function showCategory(category) {
+    const categories = document.querySelectorAll('.category');
+    const title = document.getElementById('category-title');
+
+    categories.forEach(cat => {
+        cat.classList.remove('active');
+    });
+
+    document.getElementById(category).classList.add('active');
+
+    // Оновлення заголовка категорії
+    if (category === 'new') {
+        title.innerText = 'Новинки';
+    } else if (category === 'keychains') {
+        title.innerText = 'Брелки';
+    } else if (category === 'swords') {
+        title.innerText = 'Мечі';
+    } else if (category === 'figures') {
+        title.innerText = 'Фігурки';
+    } else if (category === 'cabinet') {
+        title.innerText = 'Кабінет';
+        // Тут ви можете додати логіку для показу вмісту кабінету
+    } else {
+        title.innerText = 'Корзина';
+        document.getElementById('cart').style.display = 'block'; // Відобразити корзину
+    }
+}
 
 <!-- Кнопка для перегляду корзини -->
 <div class="navigation">
-    <button class="nav-button">Новинки</button>
-    <button class="nav-button">Брелки</button>
-    <button class="nav-button">Мечі</button>
-    <button class="nav-button">Фігурки</button>
-    <button class="nav-button">Кабінет</button> <!-- Додана кнопка Кабінет -->
-    <button class="nav-button">Корзина</button>
+    <button class="nav-button" onclick="showCategory('new')">Новинки</button>
+    <button class="nav-button" onclick="showCategory('keychains')">Брелки</button>
+    <button class="nav-button" onclick="showCategory('swords')">Мечі</button>
+    <button class="nav-button" onclick="showCategory('figures')">Фігурки</button>
+    <button class="nav-button" onclick="showCategory('cabinet')">Кабінет</button> <!-- Додана кнопка Кабінет -->
+    <button class="nav-button" onclick="showCategory('cart')">Корзина</button>
 </div>
+
 
 <!-- Заголовок категорії -->
 <h2 id="category-title">Новинки</h2>

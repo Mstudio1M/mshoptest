@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кабінет користувача</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            text-align: center;
+        }
+
+        h2 {
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+
+        .form-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border: 2px solid #00ffcc;
+            border-radius: 8px;
+            box-shadow: 0 0 15px #00ffcc;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-container input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #00ffcc;
+            background-color: transparent;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            border: 2px solid #00ffcc;
+            background-color: transparent;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            text-shadow: 0 0 10px #00ffcc;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+
+        .form-container button:hover {
+            background-color: #00ffcc;
+            color: #0d0d0d;
+            box-shadow: 0 0 25px #00ffcc, 0 0 50px #00ffcc;
+        }
+
+        .history {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border: 2px solid #00ffcc;
+            border-radius: 8px;
+            box-shadow: 0 0 15px #00ffcc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Кабінет користувача</h2>
+
+    <!-- Форма реєстрації -->
+    <div class="form-container" id="register-form">
+        <h3>Реєстрація</h3>
+        <input type="text" id="register-nickname" placeholder="Нік" required>
+        <input type="email" id="register-email" placeholder="Email" required>
+        <input type="password" id="register-password" placeholder="Пароль" required>
+        <button onclick="register()">Зареєструватися</button>
+    </div>
+
+    <!-- Форма входу -->
+    <div class="form-container" id="login-form" style="display: none;">
+        <h3>Вхід</h3>
+        <input type="text" id="login-nickname" placeholder="Нік" required>
+        <input type="password" id="login-password" placeholder="Пароль" required>
+        <button onclick="login()">Увійти</button>
+    </div>
+
+    <!-- Історія покупок -->
+    <div class="history" id="history" style="display: none;">
+        <h3>Історія покупок</h3>
+        <ul id="purchase-history"></ul>
+        <button onclick="logout()">Вийти</button>
+    </div>
+
+    <script>
+        const users = JSON.parse(localStorage.getItem('users')) || {};
+        let currentUser = localStorage.getItem('currentUser');
+
+        function register() {
+            const nickname = document.getElementById('register-nickname').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+
+            if (nickname && email && password) {
+                if (!users[nickname]) {
+                    users[nickname] = { email: email, password: password, purchases: [] };
+                    localStorage.setItem('users', JSON.stringify(users));
+                    alert('Реєстрація успішна!');
+                    showLogin();
+                } else {
+                    alert('Користувач з таким ніком вже існує!');
+                }
+            } else {
+                alert('Будь ласка, заповніть усі поля');
+            }
+        }
+
+        function login() {
+            const nickname = document.getElementById('login-nickname').value;
+            const password = document.getElementById('login-password').value;
+
+            if (nickname && password) {
+                const user = users[nickname];
+                if (user && user.password === password) {
+                    currentUser = nickname;
+                    localStorage.setItem('currentUser', currentUser);
+                    alert('Вхід успішний!');
+                    showHistory();
+                } else {
+                    alert('Невірний нік або пароль!');
+                }
+            } else {
+                alert('Будь ласка, заповніть усі поля');
+            }
+        }
+
+        function showHistory() {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('history').style.display = 'block';
+
+            const user = users[currentUser];
+            const historyList = document.getElementById('purchase-history');
+            historyList.innerHTML = '';
+
+            user.purchases.forEach(purchase => {
+                const li = document.createElement('li');
+                li.textContent = `${purchase.name} - ${purchase.price} грн`;
+                historyList.appendChild(li);
+            });
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            showLogin();
+        }
+
+        function showLogin() {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('history').style.display = 'none';
+        }
+
+        function showRegister() {
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('history').style.display = 'none';
+        }
+
+        // Перевірка наявності активного користувача
+        if (currentUser) {
+            showHistory();
+        } else {
+            showLogin();
+        }
+    </script>
+
+</body>
+</html>

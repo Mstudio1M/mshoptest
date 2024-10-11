@@ -3,358 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Неоновий Магазин</title>
-    <style>
-        /* Оновлений стиль у неоновому стилі */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0d0d0d;
-            margin: 0;
-            padding: 0;
-            color: #fff;
-        }
-        
-        h2 {
-            color: #00ffcc;
-            text-shadow: 0 0 10px #00ffcc;
-            text-align: center;
-        }
-        
-        #categories {
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        #categories button {
-            background-color: transparent;
-            color: #fff;
-            border: 2px solid #00ffcc;
-            padding: 10px 20px;
-            margin: 10px 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-shadow: 0 0 10px #00ffcc;
-            box-shadow: 0 0 15px #00ffcc;
-        }
-        
-        #categories button:hover {
-            background-color: #00ffcc;
-            color: #0d0d0d;
-            box-shadow: 0 0 25px #00ffcc, 0 0 50px #00ffcc;
-        }
-
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .product {
-            background-color: #1a1a1a;
-            border: 2px solid #00ffcc;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px #00ffcc;
-            text-align: center;
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
-            width: calc(50% - 40px);
-            box-sizing: border-box;
-        }
-
-        .product img {
-            width: 150px;
-            height: 150px;
-            display: block;
-            margin: 0 auto;
-            border: 2px solid #00ffcc;
-            border-radius: 8px;
-            box-shadow: 0 0 10px #00ffcc;
-        }
-
-        .product:hover {
-            box-shadow: 0 0 25px #00ffcc;
-            transform: translateY(-5px);
-        }
-        
-        .product button {
-            background-color: transparent;
-            color: #fff;
-            border: 2px solid #ff00cc;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            text-shadow: 0 0 10px #ff00cc;
-            box-shadow: 0 0 15px #ff00cc;
-        }
-        
-        .product button:hover {
-            background-color: #ff00cc;
-            color: #0d0d0d;
-            box-shadow: 0 0 25px #ff00cc, 0 0 50px #ff00cc;
-            transform: translateY(-3px);
-        }
-
-        .cart {
-            display: none;
-            background-color: #1a1a1a;
-            border: 2px solid #00ffcc;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px #00ffcc;
-            margin: 10px;
-        }
-
-        .cart-item {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .cart-item p {
-            margin: 0;
-        }
-
-        .category { 
-            display: none; 
-        }
-        
-        .category.active { 
-            display: block; 
-        }
-
-        .cart-button {
-            position: absolute;
-            top: 80px;
-            right: 0;
-            background-color: transparent;
-            color: #fff;
-            border: 2px solid #ffcc00;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-right: 10px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            text-shadow: 0 0 10px #ffcc00;
-            box-shadow: 0 0 15px #ffcc00;
-        }
-
-        .cart-button:hover {
-            background-color: #ffcc00;
-            color: #0d0d0d;
-            box-shadow: 0 0 25px #ffcc00, 0 0 50px #ffcc00;
-        }
-
-        #total-price {
-            color: #00ffcc;
-            font-weight: bold;
-            text-shadow: 0 0 10px #00ffcc;
-        }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Neon Shop</title>
+    <!-- Підключення файлу зі стилями -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Заголовок -->
+    <header>
+        <h1>Neon Shop</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Головна</a></li>
+                <li><a href="#">Магазин</a></li>
+                <li><a href="#">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div id="categories">
-    <button onclick="showCategory('new')">Новинки</button>
-    <button class="cart-button" id="cart-button" onclick="showCategory('cart')">🛒 Корзина</button>
-    <button onclick="showCategory('keychains')">Брелки</button>
-    <button onclick="showCategory('swords')">Мечі</button>
-    <button onclick="showCategory('figures')">Фігурки</button>
-</div>
-
-<h2 id="category-title">Новинки</h2>
-
-<div id="new" class="category active">
-    <div class="products">
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Новинка 1">
-            <h3>Новинка 1</h3>
-            <p>Ціна: 50 грн</p>
-            <button onclick="addToCart('Новинка 1', 50)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Новинка 2">
-            <h3>Новинка 2</h3>
-            <p>Ціна: 70 грн</p>
-            <button onclick="addToCart('Новинка 2', 70)">Додати в корзину</button>
-        </div>
-    </div>
-</div>
-
-<div class="category" id="keychains">
-    <div class="product-grid" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-        <div class="product" style="width: calc(50% - 20px);">
-            <img src="https://via.placeholder.com/150" alt="Фотоапарат">
-            <h3>Фотоапарат</h3>
-            <p>Ціна: 20 грн</p>
-            <button onclick="addToCart('Фотоапарат', 20)">Додати в корзину</button>
-        </div>
-        <div class="product" style="width: calc(50% - 20px);">
-            <img src="https://via.placeholder.com/150" alt="Молот Тора">
-            <h3>Молот Тора</h3>
-            <p>Ціна: 15 грн</p>
-            <button onclick="addToCart('Молот Тора', 15)">Додати в корзину</button>
-        </div>
-        <div class="product" style="width: calc(50% - 20px);">
-            <img src="https://via.placeholder.com/150" alt="Batman">
-            <h3>Batman</h3>
-            <p>Ціна: 15 грн</p>
-            <button onclick="addToCart('Batman', 15)">Додати в корзину</button>
-        </div>
-        <div class="product" style="width: calc(50% - 20px);">
-            <img src="https://via.placeholder.com/150" alt="Кріпер">
-            <h3>Кріпер</h3>
-            <p>Ціна: 25 грн</p>
-            <button onclick="addToCart('Кріпер', 25)">Додати в корзину</button>
+    <!-- Секція магазину -->
+    <section id="shop">
+        <h2>Категорії продуктів</h2>
+        <div id="category">
+            <button onclick="filterProducts('all')">Всі</button>
+            <button onclick="filterProducts('neon')">Неонові знаки</button>
+            <button onclick="filterProducts('lights')">Лампи</button>
         </div>
 
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Кавоварка">
-            <h3>Кавоварка</h3>
-            <p>Ціна: 25 грн</p>
-            <button onclick="addToCart('Кавоварка', 25)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Гиря">
-            <h3>Гиря</h3>
-            <p>Ціна: 25 грн</p>
-            <button onclick="addToCart('Гиря', 25)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Star Wars">
-            <h3>Star Wars</h3>
-            <p>Ціна: 25 грн</p>
-            <button onclick="addToCart('Star Wars', 25)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Minecraft tools - молот">
-            <h3>Minecraft tools - молот</h3>
-            <p>Ціна: 30 грн</p>
-            <button onclick="addToCart('Minecraft tools - молот', 30)">Додати в корзину</button>
-        </div>
-        <!-- Інші брелки -->
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Skull - череп">
-            <h3>Skull - череп</h3>
-            <p>Ціна: 25 грн</p>
-            <button onclick="addToCart('Skull - череп', 25)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Shop - coin">
-            <h3>Shop - coin</h3>
-            <p>Ціна: 5 грн</p>
-            <button onclick="addToCart('Shop - coin', 5)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Андроїд">
-            <h3>Андроїд</h3>
-            <p>Ціна: 15 грн</p>
-            <button onclick="addToCart('Андроїд', 15)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Кораблик">
-            <h3>Кораблик</h3>
-            <p>Ціна: 30 грн</p>
-            <button onclick="addToCart('Кораблик', 30)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Дракончик">
-            <h3>Дракончик</h3>
-            <p>Ціна: 35 грн</p>
-            <button onclick="addToCart('Дракончик', 35)">Додати в корзину</button>
-        </div>
-    </div>
-</div
-</div>
+        <!-- Список продуктів -->
+        <div id="products"></div>
+    </section>
 
-<div id="swords" class="category">
-    <!-- Мечі тут -->
-</div>
+    <!-- Футер -->
+    <footer>
+        <p>&copy; 2024 Neon Shop. Всі права захищено.</p>
+    </footer>
 
-<div id="figures" class="category">
-    <!-- Фігурки тут -->
-</div>
-
-<div class="cart" id="cart">
-    <div id="cart-items"></div>
-    <p id="total-price">Сума: 0 грн</p>
-</div>
-
-<script>
-    const cart = [];
-
-    function showCategory(category) {
-        const categories = document.querySelectorAll('.category');
-        const title = document.getElementById('category-title');
-        const cartButton = document.getElementById('cart-button');
-
-        categories.forEach(cat => {
-            cat.classList.remove('active');
-        });
-
-        document.getElementById(category).classList.add('active');
-
-        if (category === 'new') {
-            title.innerText = 'Новинки';
-            cartButton.style.display = 'block';
-        } else if (category === 'keychains') {
-            title.innerText = 'Брелки';
-            cartButton.style.display = 'block';
-        } else if (category === 'swords') {
-            title.innerText = 'Мечі';
-            cartButton.style.display = 'block';
-        } else if (category === 'figures') {
-            title.innerText = 'Фігурки';
-            cartButton.style.display = 'block';
-        } else {
-            title.innerText = 'Корзина';
-            cartButton.style.display = 'none';
-            document.getElementById('cart').style.display = 'block';
-            categories.forEach(cat => cat.style.display = 'none');
-        }
-    }
-
-    function addToCart(itemName, itemPrice) {
-        const itemInCart = cart.find(item => item.name === itemName);
-        if (itemInCart) {
-            itemInCart.quantity++;
-        } else {
-            cart.push({ name: itemName, price: itemPrice, quantity: 1 });
-        }
-
-        updateCart();
-    }
-
-    function updateCart() {
-        let cartItems = document.getElementById('cart-items');
-        let totalPrice = 0;
-
-        cartItems.innerHTML = '';
-
-        cart.forEach(item => {
-            totalPrice += item.price * item.quantity;
-            cartItems.innerHTML += `
-                <div class="cart-item">
-                    <p>${item.name} (x${item.quantity})</p>
-                    <p>${item.price * item.quantity} грн</p>
-                    <button onclick="removeFromCart('${item.name}')">Видалити</button>
-                </div>
-            `;
-        });
-
-        document.getElementById('total-price').innerText = totalPrice + ' грн';
-    }
-
-    function removeFromCart(itemName) {
-        const itemIndex = cart.findIndex(item => item.name === itemName);
-        if (itemIndex !== -1) {
-            cart.splice(itemIndex, 1);
-            updateCart();
-        }
-    }
-</script>
-
+    <!-- Підключення файлу зі скриптами -->
+    <script src="script.js"></script>
 </body>
 </html>

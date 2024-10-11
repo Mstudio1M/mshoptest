@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,7 +44,6 @@
             box-shadow: 0 0 25px #00ffcc, 0 0 50px #00ffcc;
         }
 
-        /* Оновлений код для продукції */
         .products {
             display: flex;
             flex-wrap: wrap;
@@ -60,7 +59,7 @@
             box-shadow: 0 0 15px #00ffcc;
             text-align: center;
             transition: box-shadow 0.3s ease, transform 0.3s ease;
-            width: calc(50% - 40px); /* Два товари в ряд */
+            width: calc(50% - 40px);
             box-sizing: border-box;
         }
 
@@ -99,7 +98,7 @@
         }
 
         .cart {
-            display: none; /* Сховано за замовчуванням */
+            display: none;
             background-color: #1a1a1a;
             border: 2px solid #00ffcc;
             padding: 20px;
@@ -128,7 +127,7 @@
 
         .cart-button {
             position: absolute;
-            top: 80px; /* Перемістив кнопку корзини нижче */
+            top: 80px;
             right: 0;
             background-color: transparent;
             color: #fff;
@@ -148,7 +147,6 @@
             box-shadow: 0 0 25px #ffcc00, 0 0 50px #ffcc00;
         }
 
-        /* Стиль для загальної суми */
         #total-price {
             color: #00ffcc;
             font-weight: bold;
@@ -158,7 +156,6 @@
 </head>
 <body>
 
-<!-- Кнопка для перегляду корзини -->
 <div id="categories">
     <button onclick="showCategory('new')">Новинки</button>
     <button class="cart-button" id="cart-button" onclick="showCategory('cart')">🛒 Корзина</button>
@@ -167,10 +164,8 @@
     <button onclick="showCategory('figures')">Фігурки</button>
 </div>
 
-<!-- Заголовок категорії -->
 <h2 id="category-title">Новинки</h2>
 
-<!-- Категорії товарів -->
 <div id="new" class="category active">
     <div class="products">
         <div class="product">
@@ -189,125 +184,17 @@
 </div>
 
 <div class="category" id="keychains">
-    <div class="product-grid" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-        <div class="product" style="width: calc(50% - 20px);">
-            <img src="https://via.placeholder.com/150" alt="Фотоапарат">
-            <h3>Фотоапарат</h3>
-            <p>Ціна: 20 грн</p>
-            <button onclick="addToCart('Фотоапарат', 20)">Додати в корзину</button>
-        </div>
-        <div class="product" style="width: calc(50% - 20px);">
-            <img src="https://via.placeholder.com/150" alt="Молот Тора">
-            <h3>Молот Тора</h3>
-            <p>Ціна: 15 грн</p>
-            <button onclick="addToCart('Молот Тора', 15)">Додати в корзину</button>
-        </div>
-        <div class="product" style="width: calc(50% - 20px);">
-            <img src="https://via.placeholder.com/150" alt="Batman">
-            <h3>Batman</h3>
-            <p>Ціна: 15 грн</p>
-            <button onclick="addToCart('Batman', 15)">Додати в корзину</button>
-        </div>
-        <div class="product" style="width: calc(50% - 20px);">
-            <img src="https://via.placeholder.com/150" alt="Кріпер">
-            <h3>Кріпер</h3>
-            <p>Ціна: 25 грн</p>
-            <button onclick="addToCart('Кріпер', 25)">Додати в корзину</button>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Кавоварка">
-            <h3>Кавоварка</h3>
-            <p>Ціна: 25 грн</p>
-            <button onclick="addToCart('Кавоварка', 25)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Гиря">
-            <h3>Гиря</h3>
-            <p>Ціна: 25 грн</p>
-            <button onclick="addToCart('Гиря', 25)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Star Wars">
-            <h3>Star Wars</h3>
-            <p>Ціна: 25 грн</p>
-            <button onclick="addToCart('Star Wars', 25)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Minecraft tools - молот">
-            <h3>Minecraft tools - молот</h3>
-            <p>Ціна: 30 грн</p>
-            <button onclick="addToCart('Minecraft tools - молот', 30)">Додати в корзину</button>
-        </div>
-        <!-- Інші брелки -->
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Skull - череп">
-            <h3>Skull - череп</h3>
-            <p>Ціна: 25 грн</p>
-            <button onclick="addToCart('Skull - череп', 25)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Shop - coin">
-            <h3>Shop - coin</h3>
-            <p>Ціна: 5 грн</p>
-            <button onclick="addToCart('Shop - coin', 5)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Андроїд">
-            <h3>Андроїд</h3>
-            <p>Ціна: 15 грн</p>
-            <button onclick="addToCart('Андроїд', 15)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Кораблик">
-            <h3>Кораблик</h3>
-            <p>Ціна: 30 грн</p>
-            <button onclick="addToCart('Кораблик', 30)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Дракончик">
-            <h3>Дракончик</h3>
-            <p>Ціна: 35 грн</p>
-            <button onclick="addToCart('Дракончик', 35)">Додати в корзину</button>
-        </div>
-    </div>
+    <!-- Інші брелки тут -->
 </div>
 
 <div id="swords" class="category">
-    <div class="products">
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Меч 1">
-            <h3>Меч 1</h3>
-            <p>Ціна: 100 грн</p>
-            <button onclick="addToCart('Меч 1', 100)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Меч 2">
-            <h3>Меч 2</h3>
-            <p>Ціна: 120 грн</p>
-            <button onclick="addToCart('Меч 2', 120)">Додати в корзину</button>
-        </div>
-    </div>
+    <!-- Мечі тут -->
 </div>
 
 <div id="figures" class="category">
-    <div class="products">
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Фігурка 1">
-            <h3>Фігурка 1</h3>
-            <p>Ціна: 200 грн</p>
-            <button onclick="addToCart('Фігурка 1', 200)">Додати в корзину</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Фігурка 2">
-            <h3>Фігурка 2</h3>
-            <p>Ціна: 220 грн</p>
-            <button onclick="addToCart('Фігурка 2', 220)">Додати в корзину</button>
-        </div>
-    </div>
+    <!-- Фігурки тут -->
 </div>
 
-<!-- Корзина -->
 <div class="cart" id="cart">
     <div id="cart-items"></div>
     <p id="total-price">Сума: 0 грн</p>
@@ -327,23 +214,23 @@
 
         document.getElementById(category).classList.add('active');
 
-        // Оновлення заголовка категорії
         if (category === 'new') {
             title.innerText = 'Новинки';
-            cartButton.style.display = 'block'; // Показати кнопку корзини
+            cartButton.style.display = 'block';
         } else if (category === 'keychains') {
             title.innerText = 'Брелки';
-            cartButton.style.display = 'block'; // Показати кнопку корзини
+            cartButton.style.display = 'block';
         } else if (category === 'swords') {
             title.innerText = 'Мечі';
-            cartButton.style.display = 'block'; // Показати кнопку корзини
+            cartButton.style.display = 'block';
         } else if (category === 'figures') {
             title.innerText = 'Фігурки';
-            cartButton.style.display = 'block'; // Показати кнопку корзини
+            cartButton.style.display = 'block';
         } else {
             title.innerText = 'Корзина';
-            cartButton.style.display = 'none'; // Сховати кнопку кошика при перегляді корзини
-            document.getElementById('cart').style.display = 'block'; // Відобразити корзину
+            cartButton.style.display = 'none';
+            document.getElementById('cart').style.display = 'block';
+            categories.forEach(cat => cat.style.display = 'none');
         }
     }
 
@@ -370,11 +257,20 @@
                 <div class="cart-item">
                     <p>${item.name} (x${item.quantity})</p>
                     <p>${item.price * item.quantity} грн</p>
+                    <button onclick="removeFromCart('${item.name}')">Видалити</button>
                 </div>
             `;
         });
 
         document.getElementById('total-price').innerText = totalPrice + ' грн';
+    }
+
+    function removeFromCart(itemName) {
+        const itemIndex = cart.findIndex(item => item.name === itemName);
+        if (itemIndex !== -1) {
+            cart.splice(itemIndex, 1);
+            updateCart();
+        }
     }
 </script>
 

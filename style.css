@@ -1,127 +1,147 @@
-/* Загальні стилі для сторінки */
+/* Оновлений стиль у неоновому стилі */
 body {
-    background-color: #000;
-    color: #fff;
     font-family: Arial, sans-serif;
+    background-color: #0d0d0d;
     margin: 0;
     padding: 0;
+    color: #fff;
+}
+
+h2 {
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc;
     text-align: center;
 }
 
-/* Стилі для заголовку */
-header {
-    background-color: #111;
-    padding: 20px;
-}
-
-header h1 {
-    color: #0f0;
-    font-size: 3em;
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 15px;
-}
-
-nav ul li a {
-    color: #0f0;
-    text-decoration: none;
-}
-
-/* Стилі для секції магазину */
-#shop {
-    margin: 40px 0;
-}
-
-#shop h2 {
-    font-size: 2em;
+#categories {
+    text-align: center;
     margin-bottom: 20px;
+    position: relative;
 }
 
-#category button {
-    background-color: #0f0;
-    border: none;
-    color: #000;
+#categories button {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #00ffcc;
     padding: 10px 20px;
-    margin: 5px;
+    margin: 10px 5px;
     cursor: pointer;
-    font-size: 1em;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px #00ffcc;
+    box-shadow: 0 0 15px #00ffcc;
 }
 
-#category button:hover {
-    background-color: #0c0;
+#categories button:hover {
+    background-color: #00ffcc;
+    color: #0d0d0d;
+    box-shadow: 0 0 25px #00ffcc, 0 0 50px #00ffcc;
 }
 
-#products {
+.products {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    flex-wrap: wrap;
-}
-
-/* Продукти */
-#products .product {
-    background-color: #222;
-    border: 2px solid #0f0;
-    margin: 10px;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-}
-
-#products .product h3 {
-    font-size: 1.5em;
-    margin: 0 0 10px;
-}
-
-#products .product p {
-    font-size: 1em;
-    margin: 0 0 10px;
-}
-
-footer {
-    background-color: #111;
-    padding: 20px;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-}
-
-footer p {
-    margin: 0;
-    color: #0f0;
-}
-
-.product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .product {
-    width: calc(50% - 20px);
-    margin-bottom: 20px;
+    background-color: #1a1a1a;
+    border: 2px solid #00ffcc;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #00ffcc;
+    text-align: center;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    width: calc(50% - 40px);
+    box-sizing: border-box;
 }
 
 .product img {
-    width: 100%;
-    height: auto;
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #00ffcc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #00ffcc;
 }
 
-.product h3 {
-    font-size: 18px;
-    margin: 10px 0;
+.product:hover {
+    box-shadow: 0 0 25px #00ffcc;
+    transform: translateY(-5px);
 }
 
-.product p {
-    font-size: 16px;
-    margin: 5px 0;
+.product button {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #ff00cc;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-shadow: 0 0 10px #ff00cc;
+    box-shadow: 0 0 15px #ff00cc;
 }
 
+.product button:hover {
+    background-color: #ff00cc;
+    color: #0d0d0d;
+    box-shadow: 0 0 25px #ff00cc, 0 0 50px #ff00cc;
+    transform: translateY(-3px);
+}
+
+.cart {
+    display: none;
+    background-color: #1a1a1a;
+    border: 2px solid #00ffcc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #00ffcc;
+    margin: 10px;
+}
+
+.cart-item {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-item p {
+    margin: 0;
+}
+
+.category { 
+    display: none; 
+}
+
+.category.active { 
+    display: block; 
+}
+
+.cart-button {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #ffcc00;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-shadow: 0 0 10px #ffcc00;
+    box-shadow: 0 0 15px #ffcc00;
+}
+
+.cart-button:hover {
+    background-color: #ffcc00;
+    color: #0d0d0d;
+    box-shadow: 0 0 25px #ffcc00, 0 0 50px #ffcc00;
+}
+
+#total-price {
+    color: #00ffcc;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00ffcc;
+}

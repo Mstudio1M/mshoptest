@@ -1,43 +1,72 @@
-// Масив продуктів
-const products = [
-    { name: "Neon Sign", category: "neon", description: "Bright neon sign for your room" },
-    { name: "Neon Light", category: "lights", description: "Colorful neon light" },
-    { name: "LED Lamp", category: "lights", description: "Stylish LED lamp" }
-];
+const cart = [];
 
-// Функція для відображення продуктів
-function displayProducts(productsToDisplay) {
-    const productsDiv = document.getElementById('products');
-    productsDiv.innerHTML = '';  // Очищення контейнера для продуктів
+function showCategory(category) {
+    const categories = document.querySelectorAll('.category');
+    const title = document.getElementById('category-title');
+    const cartButton = document.getElementById('cart-button');
 
-    productsToDisplay.forEach(product => {
-        const productDiv = document.createElement('div');
-        productDiv.classList.add('product');
-
-        productDiv.innerHTML = `
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-        `;
-
-        productsDiv.appendChild(productDiv);
+    categories.forEach(cat => {
+        cat.classList.remove('active');
     });
-}
 
-// Фільтрація продуктів за категоріями
-function filterProducts(category) {
-    if (category === 'all') {
-        displayProducts(products);
+    document.getElementById(category).classList.add('active');
+
+    if (category === 'new') {
+        title.innerText = 'Новинки';
+        cartButton.style.display = 'block';
+    } else if (category === 'keychains') {
+        title.innerText = 'Брелки';
+        cartButton.style.display = 'block';
+    } else if (category === 'swords') {
+        title.innerText = 'Мечі';
+        cartButton.style.display = 'block';
+    } else if (category === 'figures') {
+        title.innerText = 'Фігурки';
+        cartButton.style.display = 'block';
     } else {
-        const filteredProducts = products.filter(product => product.category === category);
-        displayProducts(filteredProducts);
+        title.innerText = 'Корзина';
+        cartButton.style.display = 'none';
+        document.getElementById('cart').style.display = 'block';
+        categories.forEach(cat => cat.style.display = 'none');
     }
 }
 
-// Початкове відображення всіх продуктів
-window.onload = function() {
-    filterProducts('all');
-};
+function addToCart(itemName, itemPrice) {
+    const itemInCart = cart.find(item => item.name === itemName);
+    if (itemInCart) {
+        itemInCart.quantity++;
+    } else {
+        cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+    }
 
-function addToCart(productName, productPrice) {
-    alert(`${productName} за ${productPrice} грн додано до корзини!`);
+    updateCart();
+}
+
+function updateCart() {
+    let cartItems = document.getElementById('cart-items');
+    let totalPrice = 0;
+
+    cartItems.innerHTML = '';
+
+    cart.forEach(item => {
+        totalPrice += item.price * item.quantity;
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <p>${item.name} (x${item.quantity})</p>
+                <p>${item.price * item.quantity} грн</p>
+                <button onclick="removeFromCart('${item.name}')">Видалити</button>
+            </div>
+        `;
+    });
+
+    document.getElementById('total-price').innerText = `Сума: ${totalPrice} грн`;
+}
+
+function removeFromCart(itemName) {
+    const itemIndex = cart.findIndex(item => item.name === itemName);
+    if (itemIndex > -1) {
+        cart.splice(itemIndex, 1);
+    }
+
+    updateCart();
 }

@@ -3,43 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Neon Shop</title>
-    <!-- Підключення файлу зі стилями -->
+    <!-- Підключаємо файл стилів -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Заголовок -->
-    <header>
-        <h1>Neon Shop</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Головна</a></li>
-                <li><a href="#">Магазин</a></li>
-                <li><a href="#">Контакти</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Секція магазину -->
-    <section id="shop">
-        <h2>Категорії продуктів</h2>
-        <div id="category">
-            <button onclick="filterProducts('all')">Всі</button>
-            <button onclick="filterProducts('neon')">Неонові знаки</button>
-            <button onclick="filterProducts('lights')">Лампи</button>
+    <!-- Твій HTML код для продуктів -->
+    <div class="category" id="keychains">
+        <div class="product-grid">
+            <!-- Твої продукти тут -->
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Фотоапарат">
+                <h3>Фотоапарат</h3>
+                <p>Ціна: 20 грн</p>
+                <button onclick="addToCart('Фотоапарат', 20)">Додати в корзину</button>
+            </div>
+            <!-- Інші продукти -->
         </div>
+    </div>
 
-        <!-- Список продуктів -->
-        <div id="products"></div>
-    </section>
-
-    <!-- Футер -->
-    <footer>
-        <p>&copy; 2024 Neon Shop. Всі права захищено.</p>
-    </footer>
-
-    <!-- Підключення файлу зі скриптами -->
+    <!-- Підключаємо JavaScript файл -->
     <script src="script.js"></script>
 </body>
 </html>

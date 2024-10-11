@@ -1,0 +1,100 @@
+/* Загальні стилі для сторінки */
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Стилі для заголовку */
+header {
+    background-color: #111;
+    padding: 20px;
+}
+
+header h1 {
+    color: #0f0;
+    font-size: 3em;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: #0f0;
+    text-decoration: none;
+}
+
+/* Стилі для секції магазину */
+#shop {
+    margin: 40px 0;
+}
+
+#shop h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#category button {
+    background-color: #0f0;
+    border: none;
+    color: #000;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#category button:hover {
+    background-color: #0c0;
+}
+
+#products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Продукти */
+#products .product {
+    background-color: #222;
+    border: 2px solid #0f0;
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+}
+
+#products .product h3 {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+}
+
+#products .product p {
+    font-size: 1em;
+    margin: 0 0 10px;
+}
+
+footer {
+    background-color: #111;
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+    color: #0f0;
+}

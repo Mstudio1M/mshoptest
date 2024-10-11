@@ -3,26 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Shop</title>
-    <!-- Підключаємо файл стилів -->
-    <link rel="stylesheet" href="style.css">
+    <title>Неоновий Магазин</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Твій HTML код для продуктів -->
-    <div class="category" id="keychains">
-        <div class="product-grid">
-            <!-- Твої продукти тут -->
-            <div class="product">
-                <img src="https://via.placeholder.com/150" alt="Фотоапарат">
-                <h3>Фотоапарат</h3>
-                <p>Ціна: 20 грн</p>
-                <button onclick="addToCart('Фотоапарат', 20)">Додати в корзину</button>
-            </div>
-            <!-- Інші продукти -->
+
+<div id="categories">
+    <button onclick="showCategory('new')">Новинки</button>
+    <button class="cart-button" id="cart-button" onclick="showCategory('cart')">🛒 Корзина</button>
+    <button onclick="showCategory('keychains')">Брелки</button>
+    <button onclick="showCategory('swords')">Мечі</button>
+    <button onclick="showCategory('figures')">Фігурки</button>
+</div>
+
+<h2 id="category-title">Новинки</h2>
+
+<div id="new" class="category active">
+    <div class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Новинка 1">
+            <h3>Новинка 1</h3>
+            <p>Ціна: 50 грн</p>
+            <button onclick="addToCart('Новинка 1', 50)">Додати в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="Новинка 2">
+            <h3>Новинка 2</h3>
+            <p>Ціна: 70 грн</p>
+            <button onclick="addToCart('Новинка 2', 70)">Додати в корзину</button>
         </div>
     </div>
+</div>
 
-    <!-- Підключаємо JavaScript файл -->
-    <script src="script.js"></script>
+<div class="category" id="keychains">
+    <!-- Брелки -->
+</div>
+
+<div id="swords" class="category">
+    <!-- Мечі -->
+</div>
+
+<div id="figures" class="category">
+    <!-- Фігурки -->
+</div>
+
+<div class="cart" id="cart">
+    <div id="cart-items"></div>
+    <p id="total-price">Сума: 0 грн</p>
+</div>
+
+<script src="scripts.js"></script>
 </body>
 </html>

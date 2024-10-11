@@ -37,3 +37,7 @@ function filterProducts(category) {
 window.onload = function() {
     filterProducts('all');
 };
+
+function addToCart(productName, productPrice) {
+    alert(`${productName} за ${productPrice} грн додано до корзини!`);
+}

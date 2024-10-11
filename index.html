@@ -154,66 +154,18 @@
             font-weight: bold;
             text-shadow: 0 0 10px #00ffcc;
         }
-        .nav-button {
-    background-color: transparent;
-    color: #00ffcc;
-    border: 2px solid #00ffcc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.nav-button:hover {
-    background-color: #00ffcc;
-    color: #0d0d0d;
-}
-
     </style>
-    <script src="path/to/your/shop.js"></script>
-
 </head>
 <body>
 
-function showCategory(category) {
-    const categories = document.querySelectorAll('.category');
-    const title = document.getElementById('category-title');
-
-    categories.forEach(cat => {
-        cat.classList.remove('active');
-    });
-
-    document.getElementById(category).classList.add('active');
-
-    // Оновлення заголовка категорії
-    if (category === 'new') {
-        title.innerText = 'Новинки';
-    } else if (category === 'keychains') {
-        title.innerText = 'Брелки';
-    } else if (category === 'swords') {
-        title.innerText = 'Мечі';
-    } else if (category === 'figures') {
-        title.innerText = 'Фігурки';
-    } else if (category === 'cabinet') {
-        title.innerText = 'Кабінет';
-        // Тут ви можете додати логіку для показу вмісту кабінету
-    } else {
-        title.innerText = 'Корзина';
-        document.getElementById('cart').style.display = 'block'; // Відобразити корзину
-    }
-}
-
 <!-- Кнопка для перегляду корзини -->
-<div class="navigation">
-    <button class="nav-button" onclick="showCategory('new')">Новинки</button>
-    <button class="nav-button" onclick="showCategory('keychains')">Брелки</button>
-    <button class="nav-button" onclick="showCategory('swords')">Мечі</button>
-    <button class="nav-button" onclick="showCategory('figures')">Фігурки</button>
-    <button class="nav-button" onclick="showCategory('cabinet')">Кабінет</button> <!-- Додана кнопка Кабінет -->
-    <button class="nav-button" onclick="showCategory('cart')">Корзина</button>
+<div id="categories">
+    <button onclick="showCategory('new')">Новинки</button>
+    <button class="cart-button" id="cart-button" onclick="showCategory('cart')">🛒 Корзина</button>
+    <button onclick="showCategory('keychains')">Брелки</button>
+    <button onclick="showCategory('swords')">Мечі</button>
+    <button onclick="showCategory('figures')">Фігурки</button>
 </div>
-
 
 <!-- Заголовок категорії -->
 <h2 id="category-title">Новинки</h2>

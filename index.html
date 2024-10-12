@@ -3,55 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Неоновий Магазин</title>
+    <title>Неоновий магазин</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav>
+        <button class="nav-btn">Новинки</button>
+        <button class="nav-btn">Корзина</button>
+        <button class="nav-btn">Брелки</button>
+        <button class="nav-btn">Мечі</button>
+        <button class="nav-btn">Фігурки</button>
+    </nav>
 
-<div id="categories">
-    <button onclick="showCategory('new')">Новинки</button>
-    <button class="cart-button" id="cart-button" onclick="showCategory('cart')">🛒 Корзина</button>
-    <button onclick="showCategory('keychains')">Брелки</button>
-    <button onclick="showCategory('swords')">Мечі</button>
-    <button onclick="showCategory('figures')">Фігурки</button>
-</div>
-
-<h2 id="category-title">Новинки</h2>
-
-<div id="new" class="category active">
     <div class="products">
         <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Новинка 1">
+            <div class="product-image"></div>
             <h3>Новинка 1</h3>
             <p>Ціна: 50 грн</p>
-            <button onclick="addToCart('Новинка 1', 50)">Додати в корзину</button>
+            <button class="add-to-cart-btn">Додати в корзину</button>
         </div>
+
         <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Новинка 2">
+            <div class="product-image"></div>
             <h3>Новинка 2</h3>
             <p>Ціна: 70 грн</p>
-            <button onclick="addToCart('Новинка 2', 70)">Додати в корзину</button>
+            <button class="add-to-cart-btn">Додати в корзину</button>
         </div>
     </div>
-</div>
 
-<div class="category" id="keychains">
-    <!-- Брелки -->
-</div>
-
-<div id="swords" class="category">
-    <!-- Мечі -->
-</div>
-
-<div id="figures" class="category">
-    <!-- Фігурки -->
-</div>
-
-<div class="cart" id="cart">
-    <div id="cart-items"></div>
-    <p id="total-price">Сума: 0 грн</p>
-</div>
-
-<script src="scripts.js"></script>
+    <div class="cart-summary">
+        <h3>Сума: 0 грн</h3>
+    </div>
 </body>
 </html>

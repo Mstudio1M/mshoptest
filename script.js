@@ -110,6 +110,60 @@
                 'https://makerworld.bblmw.com/makerworld/model/USa8b173f9741f5a/design/2024-01-29_47c1474112c54.jpg?x-oss-process=image/resize,w_1920/format,webp'
             ];
         }
+        if (productId === 'photoaparat') {
+            images = [
+                'https://cdn.thingiverse.com/renders/82/0e/ee/cc/c5/6dd715432dc2e8cf228afaa79f2b03a8_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/02/bb/04/31/0b/9fb25a572e1a1393a9f8a397cafb75f9_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/31/fb/43/12/fc/4806d0e3e28857cfae176ec288c4d2a1_display_large.jpg'
+            ];
+        }
+        if (productId === 'Molot tora') {
+            images = [
+                'https://cdn.thingiverse.com/renders/7a/5e/4d/85/3c/c11a746fc996fff64a2f43529263059c_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/0d/b1/70/50/ed/cb5f1c2a9e255b964072ba5d322e0450_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/b9/65/1c/ff/9b/49f9fd2c10f15202ddd9b7d99dec0dca_display_large.jpg'
+            ];
+        }
+        if (productId === 'batman') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/DSM00000000487053/design/2024-06-06_91f7acce7ec2c.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'Coffe') {
+            images = [
+                'https://cdn.thingiverse.com/renders/d7/94/7a/25/30/2f068820c15acf2288ca4dcb54ec8039_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/bd/c7/4c/6e/17/5e89d41a075d3e2336be71769e72da00_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/ee/b1/0c/6b/12/16b6c37f5fd5a193aa5469ecb4509349_display_large.jpg'
+            ];
+        }
+        if (productId === 'Creaper') {
+            images = [
+                'https://cdn.thingiverse.com/renders/ed/7d/7b/8b/06/creepers_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/eb/d3/76/06/4d/creepersleutelhanger_display_large.jpg'
+            ];
+        }
+        if (productId === 'Kilo') {
+            images = [
+                'https://cdn.thingiverse.com/assets/9e/f9/c7/83/d9/large_display_2019-11-18_22.08.59.jpg',
+                'https://cdn.thingiverse.com/assets/b2/c7/74/d2/cf/large_display_Kettlebell_v5.stl',
+                
+            ];
+        }
+        if (productId === 'photoaparat') {
+            images = [
+                '',
+                '',
+                ''
+            ];
+        }
+        if (productId === 'photoaparat') {
+            images = [
+                '',
+                '',
+                ''
+            ];
+        }
+
 
         // Додай інші товари тут
 

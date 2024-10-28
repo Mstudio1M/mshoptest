@@ -1,4 +1,4 @@
-<script>
+
     let cart = [];
 
     function openMenu() {
@@ -137,4 +137,3 @@
         if (currentImageIndex < 0) currentImageIndex = images.length - 1;
         showImage(currentImageIndex);
     }
-</script>

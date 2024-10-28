@@ -1,71 +1,250 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #111; /* Темний фон */
-    color: #fff; /* Білий текст */
-    margin: 0;
-    padding: 0;
-}
+/* Оновлений стиль у неоновому стилі */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
 
-nav {
-    background-color: #333;
-    padding: 10px;
-    text-align: center;
-}
+        h2 {
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+            text-align: center;
+        }
 
-.nav-btn {
-    background-color: #444;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        /* Стиль кнопки меню */
+        #menu-toggle {
+            font-size: 30px;
+            cursor: pointer;
+            color: #00ffcc;
+            padding: 10px;
+            text-align: left;
+            background: none;
+            border: none;
+            outline: none;
+            display: inline-block;
+            margin: 10px;
+            transition: color 0.3s ease;
+        }
 
-.nav-btn:hover {
-    background-color: #555;
-}
+        #menu-toggle:hover {
+            color: #ff00cc;
+        }
 
-.products {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
+        /* Сховане бокове меню */
+        #side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #0d0d0d;
+            overflow-x: hidden;
+            transition: width 0.5s ease;
+            padding-top: 60px;
+        }
 
-.product {
-    background-color: #222;
-    border: 1px solid #333;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 10px 0;
-    width: 200px;
-    text-align: center;
-}
+        #side-menu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #00ffcc;
+            display: block;
+            transition: 0.3s;
+            text-shadow: 0 0 10px #00ffcc;
+        }
 
-.product-image {
-    background-color: #444;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 10px;
-}
+        #side-menu a:hover {
+            color: #ff00cc;
+        }
 
-.add-to-cart-btn {
-    background-color: #ff6600;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        #side-menu .close-btn {
+            position: absolute;
+            top: 0;
+            right: 15px;
+            font-size: 36px;
+        }
 
-.add-to-cart-btn:hover {
-    background-color: #ff4500;
-}
+        /* Оновлений код для продукції */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-.cart-summary {
-    background-color: #333;
-    padding: 20px;
-    text-align: center;
-    margin-top: 20px;
-}
+        .product {
+            background-color: #1a1a1a;
+            border: 2px solid #00ffcc;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px #00ffcc;
+            text-align: center;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            width: calc(50% - 40px); /* Два товари в ряд */
+            box-sizing: border-box;
+        }
+
+        .product img {
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: 0 auto;
+            border: 2px solid #00ffcc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        .product:hover {
+            box-shadow: 0 0 25px #00ffcc;
+            transform: translateY(-5px);
+        }
+
+        .product button {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #ff00cc;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-shadow: 0 0 10px #ff00cc;
+            box-shadow: 0 0 15px #ff00cc;
+        }
+
+        .product button:hover {
+            background-color: #ff00cc;
+            color: #0d0d0d;
+            box-shadow: 0 0 25px #ff00cc, 0 0 50px #ff00cc;
+            transform: translateY(-3px);
+        }
+
+        .category {
+            display: none;
+        }
+
+        .category.active {
+            display: block;
+        }
+
+        /* Стиль для загальної суми */
+        #total-price {
+            color: #00ffcc;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+        .cart-btn {
+        background-color: transparent;
+        color: #fff;
+        border: 2px solid #00ffcc;
+        padding: 10px 20px; /* Збільшуємо padding */
+        cursor: pointer;
+        border-radius: 8px; /* Трохи більше округлення */
+        font-size: 18px; /* Збільшуємо шрифт */
+        width: 60px; /* Фіксуємо ширину кнопки */
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 5px; /* Додаємо відступи між кнопками */
+        }
+    
+        .cart-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .minus-btn {
+            border-color: #ff00cc;
+            color: #ff00cc;
+            box-shadow: 0 0 10px #ff00cc;
+        }
+        
+        .minus-btn:hover {
+            background-color: #ff00cc;
+            color: #0d0d0d;
+            box-shadow: 0 0 20px #ff00cc;
+        }
+        
+        .plus-btn {
+            border-color: #00ffcc;
+            color: #00ffcc;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+        
+        .plus-btn:hover {
+            background-color: #00ffcc;
+            color: #0d0d0d;
+            box-shadow: 0 0 20px #00ffcc;
+        }
+        .sub-category {
+        display: none;
+        margin-top: 20px;
+        }
+        
+        .sub-category.active {
+            display: block;
+        }
+        
+        #sub-categories button {
+            background-color: transparent;
+            color: #00ffcc;
+            border: 2px solid #00ffcc;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+                /* Стиль для модального вікна */
+            .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            }
+            .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 80%;
+            max-width: 700px;
+            }
+            .modal-images img {
+            width: 100%;
+            display: none;
+            }
+            .modal-images img.active {
+            display: block;
+            }
+            .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            }
+            .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            }
+            .prev {
+            left: 0;
+            }
+            .next {
+            right: 0;
+            }

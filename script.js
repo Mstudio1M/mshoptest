@@ -62,7 +62,7 @@
         }
         updateCart();
     }
-        function showSubCategory(subCategory) {
+    function showSubCategory(subCategory) {
         const subCategories = document.querySelectorAll('.sub-category');
         subCategories.forEach(sub => {
             sub.style.display = 'none';
@@ -187,23 +187,74 @@
         // Показуємо перше зображення
         showImage(0);
         document.getElementById('imageModal').style.display = "block";
-    }
+        }
 
-    function closeModal() {
-        document.getElementById('imageModal').style.display = "none";
-    }
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
 
-    function showImage(index) {
-        const modalImagesDiv = document.getElementById('modalImages');
-        modalImagesDiv.innerHTML = images.map((img, i) => 
-            `<img src="${img}" class="${i === index ? 'active' : ''}">`
-        ).join('');
-        currentImageIndex = index;
-    }
+        function showImage(index) {
+            const modalImagesDiv = document.getElementById('modalImages');
+            modalImagesDiv.innerHTML = images.map((img, i) => 
+                `<img src="${img}" class="${i === index ? 'active' : ''}">`
+            ).join('');
+            currentImageIndex = index;
+            }
 
-    function changeImage(direction) {
-        currentImageIndex += direction;
-        if (currentImageIndex >= images.length) currentImageIndex = 0;
-        if (currentImageIndex < 0) currentImageIndex = images.length - 1;
-        showImage(currentImageIndex);
-    }
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex >= images.length) currentImageIndex = 0;
+            if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+            showImage(currentImageIndex);
+        }
+        // Припустимо, у вас є масив cartItems, що містить товари в корзині
+        const cartItems = [
+            { name: 'Товар 1', price: 100, quantity: 2 },
+            { name: 'Товар 2', price: 150, quantity: 1 }
+        ];
+        
+        document.getElementById('checkout-btn').onclick = function() {
+            // Отримати деталі замовлення з корзини
+            let orderDetails = '';
+            let total = 0;
+        
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                orderDetails += `${item.name} (Кількість: ${item.quantity}, Ціна: ${item.price} грн) - Загальна: ${itemTotal} грн<br>`;
+                total += itemTotal;
+            });
+        
+            document.getElementById('order-details').innerHTML = orderDetails;
+            document.getElementById('confirmation-modal').style.display = 'block';
+        
+            // Додаємо загальну суму до глобальної змінної
+            window.totalAmount = total;
+        };
+        
+        document.getElementById('cancel-order').onclick = function() {
+            document.getElementById('confirmation-modal').style.display = 'none';
+        };
+        
+        document.getElementById('confirm-order').onclick = function() {
+            const orderData = {
+                items: document.getElementById('order-details').innerHTML, // Отримати дані з вікна підтвердження
+                total: window.totalAmount, // Використати загальну суму
+                username: "Privatefanat" // Тут можна динамічно вставити нік користувача
+            };
+        
+            fetch('/api/confirm-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderData)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Замовлення підтверджено!');
+                    document.getElementById('confirmation-modal').style.display = 'none';
+                } else {
+                    alert('Сталася помилка при підтвердженні замовлення.');
+                }
+            });
+        };
+        

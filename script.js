@@ -149,6 +149,43 @@
                 
             ];
         }
+        if (productId === 'minecraft tools') {
+            images = [
+                'https://cdn.thingiverse.com/renders/e3/48/7c/e6/1e/minecraft-keychains-for-thingy_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/12/fc/08/63/9d/minecraft_tools_with_keychain_hole_plus_hoe_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/d4/78/d9/d7/51/minecraft_tools_with_keychain_hole_display_large.jpg'
+            ];
+        }
+        if (productId === 'star wars') {
+            images = [
+                'https://cdn.thingiverse.com/renders/b0/42/6c/db/4a/starwarskeychain_display_large.jpg'
+            ];
+        }
+        if (productId === 'Skull') {
+            images = [
+                'https://cdn.thingiverse.com/renders/c2/5c/4d/55/a5/d17d3b9c32aa8d30a36156a16162b720_display_large.jpg',
+            ];
+        }
+        if (productId === 'shop coin') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/US70acaef8f09414/design/2024-08-07_7c364a3505fda.png?x-oss-process=image/resize,w_1920/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/US70acaef8f09414/design/2023-12-21_c573e891b6d41.png?x-oss-process=image/resize,w_1920/format,webp'
+            ];
+        }
+        if (productId === 'Android') {
+            images = [
+                'https://cdn.thingiverse.com/renders/c8/3b/29/6c/49/keys_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/94/01/96/e6/4b/straight-view_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/b1/90/d4/36/f4/android_key_fob_display_large.jpg'
+            ];
+        }
+        if (productId === 'photoaparat') {
+            images = [
+                '',
+                '',
+                ''
+            ];
+        }
 
 
         // Додай інші товари тут

@@ -179,13 +179,7 @@
                 'https://cdn.thingiverse.com/renders/b1/90/d4/36/f4/android_key_fob_display_large.jpg'
             ];
         }
-        if (productId === 'photoaparat') {
-            images = [
-                '',
-                '',
-                ''
-            ];
-        }
+
 
 
         // Додай інші товари тут

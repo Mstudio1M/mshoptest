@@ -149,20 +149,6 @@
                 
             ];
         }
-        if (productId === 'photoaparat') {
-            images = [
-                '',
-                '',
-                ''
-            ];
-        }
-        if (productId === 'photoaparat') {
-            images = [
-                '',
-                '',
-                ''
-            ];
-        }
 
 
         // Додай інші товари тут

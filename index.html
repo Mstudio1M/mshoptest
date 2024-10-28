@@ -7,57 +7,305 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Кнопка для відкриття меню -->
+<!-- Гамбургер меню -->
 <button id="menu-toggle" onclick="openMenu()">☰</button>
 
+<!-- Бокове меню -->
+<div id="side-menu"> <!-- Додаємо id="side-menu" -->
+    <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">&times;</a>
+    <a href="javascript:void(0)" onclick="showCategory('keychains')">Брелки</a>
+    <a href="javascript:void(0)" onclick="showCategory('swords')">Мечі</a>
+    <a href="javascript:void(0)" onclick="showCategory('figures')">Фігурки</a>
+    <a href="javascript:void(0)" onclick="showCategory('Ukraine')">Я Патріот</a>
+    <a href="javascript:void(0)" onclick="showCategory('cart')">Корзина</a> <!-- Кнопка для відображення корзини -->
+</div>
 
-    <!-- Бокове меню -->
-    <div id="side-menu">
-        <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">&times;</a>
-        <a href="javascript:void(0)" onclick="showCategory('keychains')">Брелки</a>
-        <a href="javascript:void(0)" onclick="showCategory('swords')">Мечі</a>
-        <a href="javascript:void(0)" onclick="showCategory('figures')">Фігурки</a>
-        <a href="javascript:void(0)" onclick="showCategory('Ukraine')">Я Патріот</a>
-        <a href="javascript:void(0)" onclick="showCategory('cart')">Корзина</a>
+
+<!-- Категорія Корзина -->
+<div id="cart" class="category">
+    <h2>Ваш кошик</h2>
+    <div id="cart-items"></div>
+    <p id="total-price">Загальна сума: 0 грн</p>
+</div>
+<div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <div class="modal-images" id="modalImages">
+            <!-- Тут будуть зображення товару -->
+        </div>
+        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next" onclick="changeImage(1)">&#10095;</a>
     </div>
+</div>
 
-    <!-- Секція корзини -->
-    <div id="cart" class="category">
-        <h2>Ваш кошик</h2>
-        <div id="cart-items"></div>
-        <p id="total-price">Загальна сума: 0 грн</p>
+
+    
+<div class="category active" id="keychains">
+    <div class="product-grid" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/renders/82/0e/ee/cc/c5/6dd715432dc2e8cf228afaa79f2b03a8_display_large.jpg" alt="Фотоапарат"> 
+            
+            <h3>Фотоапарат</h3>
+            <p>Ціна: 20 грн</p>
+            <button onclick="addToCart('Фотоапарат', 20)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/US7592cd2d57875c/design/2024-09-15_26481ebc4543.png?x-oss-process=image/resize,w_1000/format,webp" alt="Молот Тора">
+            <h3>Молот Тора</h3>
+            <p>Ціна: 15 грн</p>
+            <button onclick="addToCart('Молот Тора', 15)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/DSM00000000487053/design/2024-06-06_91f7acce7ec2c.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Batman">
+            <h3>Batman</h3>
+            <p>Ціна: 15 грн</p>
+            <button onclick="addToCart('Batman', 15)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/renders/ed/7d/7b/8b/06/creepers_display_large.jpg" alt="Кріпер">
+            <h3>Кріпер</h3>
+            <p>Ціна: 25 грн</p>
+            <button onclick="addToCart('Кріпер', 25)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/renders/d7/94/7a/25/30/2f068820c15acf2288ca4dcb54ec8039_display_large.jpg">
+            <h3>Кавоварка</h3>
+            <p>Ціна: 25 грн</p>
+            <button onclick="addToCart('Кавоварка', 25)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/assets/9e/f9/c7/83/d9/large_display_2019-11-18_22.08.59.jpg">
+            <h3>Гиря</h3>
+            <p>Ціна: 25 грн</p>
+            <button onclick="addToCart('Гиря', 25)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/renders/b0/42/6c/db/4a/starwarskeychain_display_large.jpg" alt="Star Wars">
+            <h3>Star Wars</h3>
+            <p>Ціна: 25 грн</p>
+            <button onclick="addToCart('Star Wars', 25)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://s3.eu-central-1.amazonaws.com/telegram.sendpulse.prod/attachments/4aae4205d56150b28e9cf244126dbd0f/694a9ef3-9440-45b1-8aeb-32239c4b0606.jpg" alt="Minecraft tools - молот">
+            <h3>Minecraft tools - молот</h3>
+            <p>Ціна: 30 грн</p>
+            <button onclick="addToCart('Minecraft tools - молот', 30)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/renders/c2/5c/4d/55/a5/d17d3b9c32aa8d30a36156a16162b720_display_large.jpg" alt="Skull - череп">
+            <h3>Skull - череп</h3>
+            <p>Ціна: 25 грн</p>
+            <button onclick="addToCart('Skull - череп', 25)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/US70acaef8f09414/design/2024-08-07_7c364a3505fda.png?x-oss-process=image/resize,w_1000/format,webp" alt="Shop - coin">
+            <h3>Shop - coin</h3>
+            <p>Ціна: 5 грн</p>
+            <button onclick="addToCart('Shop - coin', 5)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/renders/c8/3b/29/6c/49/keys_display_large.jpg" alt="Андроїд">
+            <h3>Андроїд</h3>
+            <p>Ціна: 15 грн</p>
+            <button onclick="addToCart('Андроїд', 15)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/DSM00000000577568/design/2024-08-07_98ceb2d9cf02f.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Кораблик">
+            <h3>Кораблик</h3>
+            <p>Ціна: 30 грн</p>
+            <button onclick="addToCart('Кораблик', 30)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/USc89b7e5bd1f/design/2024-01-05_92b431bb050bc.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Дракончик">
+            <h3>Дракончик</h3>
+            <p>Ціна: 35 грн</p>
+            <button onclick="addToCart('Дракончик', 35)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-10_1d26740c93529.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Тапок Фенга">
+            <h3>Тапок Фенга</h3>
+            <p>Ціна: 35 грн</p>
+            <button onclick="addToCart('Тапок Фенга', 35)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/USaf1685aea5f633/design/2024-09-15_478c241d04ce.png?x-oss-process=image/resize,w_1000/format,webp" alt="Тапок Фенга">
+            <h3>PS4 </h3>
+            <p>Ціна: 10 грн</p>
+            <button onclick="addToCart('PS4 ', 10)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/USed22dc1edf08ff/design/2024-05-05_329f958adb2b9.jpeg?x-oss-process=image/resize,w_1000/format,webp" alt="Тапок Фенга">
+            <h3>Ракетка для бадмінтону/тенісу </h3>
+            <p>Ціна: 10 грн</p>
+            <button onclick="addToCart('Ракетка для бадмінтону/тенісу', 10)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/USd4d439a86e9051/design/2023-12-01_fc3b9c8e62259.png?x-oss-process=image/resize,w_1000/format,webp" alt="Тапок Фенга">
+            <h3>Robot</h3>
+            <p>Ціна: 35 грн</p>
+            <button onclick="addToCart('Robot', 35)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/USb54cce48fe9a75/design/2024-03-02_bcd4a3e40fc33.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Тапок Фенга">
+            <h3>Якір V1 </h3></h3>
+            <p>Ціна: 20 грн</p>
+            <button onclick="addToCart('Якір V1 ', 20)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/USb4210acf7b9e7b/design/2024-01-17_13f72052b1014.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Тапок Фенга">
+            <h3>Якір V2</h3>
+            <p>Ціна: 15 грн</p>
+            <button onclick="addToCart('Якір V2', 15)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/USb3734f797ba2f3/design/2023-10-24_d7aed8c739843.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Тапок Фенга">
+            <h3>Roblox</h3>
+            <p>Ціна: 15 грн</p>
+            <button onclick="addToCart('Roblox', 15)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/US39a86a52dfbd74/design/2024-06-08_d2284ecc30662.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Тапок Фенга">
+            <h3>Бовлінг</h3>
+            <p>Ціна: 15 грн</p>
+            <button onclick="addToCart('Бовлінг', 15)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/assets/71/8f/fd/17/fa/large_display_19059.jpg" alt="Тапок Фенга">
+            <h3>Starbucks </h3>
+            <p>Ціна: 20 грн</p>
+            <button onclick="addToCart('Starbucks ', 20)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/USb8e820cac7b732/design/2024-02-27_538821e844ed2.jpeg?x-oss-process=image/resize,w_1000/format,webp" alt="Тапок Фенга">
+            <h3>Spiderman </h3>
+            <p>Ціна: 25 грн</p>
+            <button onclick="addToCart('Spiderman ', 25)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/renders/d1/67/f8/d4/eb/vader_fob_display_large.jpg" alt="Тапок Фенга">
+            <h3>Darth Vader</h3>
+            <p>Ціна: 25 грн</p>
+            <button onclick="addToCart('Darth Vader', 25)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/assets/02/cd/b7/ab/b0/large_display_IMG_1449.jpg" alt="Тапок Фенга">
+            <h3>Halloween Ghost</h3>
+            <p>Ціна: 15 грн</p>
+            <button onclick="addToCart('Halloween Ghost', 15)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/renders/30/e2/12/32/86/IMG_4140_display_large.JPG" alt="Тапок Фенга">
+            <h3>Poop</h3>
+            <p>Ціна: 35 грн</p>
+            <button onclick="addToCart('Тапок Фенга', 35)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/USd72ecbfe65b4f7/design/2024-04-10_d3c736ef3b0dc8.jpeg?x-oss-process=image/resize,w_1000/format,webp" alt="Тапок Фенга">
+            <h3>Ракетка для падел тенісу</h3>
+            <p>Ціна: 20 грн</p>
+            <button onclick="addToCart('Ракетка для падел тенісу', 20)">Додати в корзину</button>
+        </div>
+
     </div>
+</div>
 
-    <!-- Модальне вікно для зображень товарів -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <div class="modal-images" id="modalImages">
-                <!-- Зображення товару -->
-            </div>
-            <a class="prev" onclick="changeImage(-1)">&#10094;</a>
-            <a class="next" onclick="changeImage(1)">&#10095;</a>
+<div id="swords" class="category">
+    <div class="product-grid" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-10_1d26740c93529.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="katanaV1" onclick="openModal('katanaV1')">
+            <h3>Катана V1</h3>
+            <p>Ціна: 150 грн</p>
+            <button onclick="addToCart('Катана V1', 150)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-10_1d26740c93529.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Dragon wand" onclick="openModal('katanaV2')">
+            <h3>Катана V2</h3></h3>
+            <p>Ціна: 150 грн</p>
+            <button onclick="addToCart('Катана V2', 150)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-10_1d26740c93529.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Dragon wand" onclick="openModal('Dragon wand')">
+            <h3>Dragon Wand</h3></h3>
+            <p>Ціна: 150 грн</p>
+            <button onclick="addToCart('Dragon Wand', 150)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-10_1d26740c93529.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Dragon wand" onclick="openModal('lightswordV1')">
+            <h3>Світловий Меч V1</h3></h3>
+            <p>Ціна: 150 грн</p>
+            <button onclick="addToCart('Світловий Меч V1', 150)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-10_1d26740c93529.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Dragon wand" onclick="openModal('lightswordV2')">
+            <h3>Світловий Меч V2</h3></h3>
+            <p>Ціна: 250 грн</p>
+            <button onclick="addToCart('Світловий Меч V2', 250)">Додати в корзину</button>
         </div>
     </div>
+</div>
 
-    <!-- Категорія Брелки з товарами -->
-    <div class="category active" id="keychains">
+<!-- Категорія Фігурки -->
+<div id="figures" class="category">
+    <h2>Фігурки</h2>
+    <div id="sub-categories" style="margin-bottom: 20px;">
+        <button onclick="showSubCategory('moving')">Рухомі</button>
+        <button onclick="showSubCategory('non-moving')">Нерухомі</button>
+    </div>
+
+    <!-- Рухомі Фігурки -->
+    <div id="moving" class="sub-category" style="display: none;">
+        <h3>Рухомі фігурки</h3>
         <div class="product-grid" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
             <div class="product" style="width: calc(50% - 20px);">
-                <img src="https://cdn.thingiverse.com/renders/82/0e/ee/cc/c5/6dd715432dc2e8cf228afaa79f2b03a8_display_large.jpg" alt="Фотоапарат">
-                <h3>Фотоапарат</h3>
-                <p>Ціна: 20 грн</p>
-                <button onclick="addToCart('Фотоапарат', 20)">Додати в корзину</button>
+                <img src="https://makerworld.bblmw.com/makerworld/model/USed962a4d116694/design/2024-01-04_c8e50e7756353.jpeg?x-oss-process=image/resize,w_1000/format,webp" alt="Восьминіг">
+                <h3>Восьминіг</h3>
+                <p>Ціна: 100 грн</p>
+                <button onclick="addToCart('Восьминіг', 100)">Додати в корзину</button>
             </div>
             <div class="product" style="width: calc(50% - 20px);">
-                <img src="https://makerworld.bblmw.com/makerworld/model/US7592cd2d57875c/design/2024-09-15_26481ebc4543.png?x-oss-process=image/resize,w_1000/format,webp" alt="Молот Тора">
-                <h3>Молот Тора</h3>
-                <p>Ціна: 15 грн</p>
-                <button onclick="addToCart('Молот Тора', 15)">Додати в корзину</button>
+                <img src="https://makerworld.bblmw.com/makerworld/model/US3b9ff1d951504d/design/2024-08-02_a32ca79b29355.png?x-oss-process=image/resize,w_1000/format,webp" alt="дракон">
+                <h3>Дракон</h3>
+                <p>Ціна: 150 грн</p>
+                <button onclick="addToCart('Дракон', 150)">Додати в корзину</button>
             </div>
-            <!-- Додайте інші товари тут аналогічно -->
         </div>
     </div>
+
+    <!-- Нерухомі Фігурки -->
+    <div id="non-moving" class="sub-category" style="display: none;">
+        <h3>Нерухомі фігурки</h3>
+        <div class="product-grid" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div class="product" style="width: calc(50% - 20px);">
+                <img src="https://makerworld.bblmw.com/makerworld/model/USa42ed4537b10b2/design/2024-10-13_af93788ad38c6.jpg?x-oss-process=image/resize,w_1000/format,webp" alt="Підставка механічна для телефону">
+                <h3>Підставка механічна для телефону</h3>
+                <p>Ціна: 200 грн</p>
+                <button onclick="addToCart('Підставка механічна для телефону', 200)">Додати в корзину</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    
+<div id="Ukraine" class="category">
+    <div class="product-grid" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://cdn.thingiverse.com/assets/c6/ab/0e/39/cb/large_display_f6f929db-3649-4e84-9564-8e3c8afa0de3.png" alt="Phone Holder Ukraine">
+            <h3>Phone Holder Ukraine</h3>
+            <p>Ціна: 100 грн</p>
+            <button onclick="addToCart('Phone Holder Ukraine', 100)">Додати в корзину</button>
+        </div>
+        <div class="product" style="width: calc(50% - 20px);">
+            <img src="https://makerworld.bblmw.com/makerworld/model/USea72ff62737966/design/2024-04-02_a7a0c1a90c7088.jpg?x-oss-process=image/resize,w_1920/format,webp" alt=" Phonestand for Ukraine">
+            <h3>Phonestand for Ukraine V1</h3></h3>
+            <p>Ціна: 100 грн</p>
+            <button onclick="addToCart('Phonestand for Ukraine V1', 100)">Додати в корзину</button>
+        </div>
+    </div>
+</div>
+
+
 
     <script src="script.js"></script>
 </body>

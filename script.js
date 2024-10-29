@@ -179,6 +179,105 @@
                 'https://cdn.thingiverse.com/renders/b1/90/d4/36/f4/android_key_fob_display_large.jpg'
             ];
         }
+        if (productId === 'Korablyk') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/DSM00000000577568/design/2024-08-07_98ceb2d9cf02f.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/DSM00000000577568/design/2024-08-07_e8844cd3da2c1.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/DSM00000000577568/design/2024-08-07_da4fe893c4dc3.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'Dragonkeychain') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/USc89b7e5bd1f/design/2024-01-05_92b431bb050bc.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/USc89b7e5bd1f/design/2024-01-05_3c2028376938d.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/USc89b7e5bd1f/design/2024-01-05_9e0eef2b9fbe7.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'Tapok') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-12_84daf55204ae9.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-10_1d26740c93529.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-05_0d6a333cf6786.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'ps4') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/USaf1685aea5f633/design/2024-09-15_5881d8bfde931.png?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/USaf1685aea5f633/design/2024-09-15_38c0944f9acef.png?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/USaf1685aea5f633/design/2024-09-15_d1fd489e5e604.png?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'racket1') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/USed22dc1edf08ff/design/2024-05-05_c6656178f783e.jpeg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/USed22dc1edf08ff/design/2024-05-05_329f958adb2b9.jpeg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'robot') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/USd4d439a86e9051/design/2023-12-01_fc3b9c8e62259.png?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'yakirV1') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/USb54cce48fe9a75/design/2024-03-02_bcd4a3e40fc33.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'yakirV2') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/USb4210acf7b9e7b/design/2024-01-17_13f72052b1014.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'roblox') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/USb3734f797ba2f3/design/2023-10-24_d7aed8c739843.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'bovling') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/US39a86a52dfbd74/design/2024-06-08_d2284ecc30662.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/US39a86a52dfbd74/design/2024-06-08_6c12f322b0f93.jpeg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
+        if (productId === 'starbucks') {
+            images = [
+                'https://cdn.thingiverse.com/assets/71/8f/fd/17/fa/large_display_19059.jpg',
+                'https://cdn.thingiverse.com/assets/72/26/00/df/0a/large_display_IMG-6215.jpg'
+            ];
+        }
+        if (productId === 'spiderman') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/USb8e820cac7b732/design/2024-02-27_538821e844ed2.jpeg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/USb8e820cac7b732/design/2024-02-25_f4045405a9bfe.png?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/USb8e820cac7b732/design/2024-02-25_a2fa4509082b.png?x-oss-process=image/resize,w_1920/format,webp'
+            ];
+        }
+        if (productId === 'darthvader') {
+            images = [
+                'https://cdn.thingiverse.com/renders/d1/67/f8/d4/eb/vader_fob_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/5e/f9/bb/f6/77/fob_front_display_large.jpg',
+                'https://cdn.thingiverse.com/renders/dc/6d/7d/35/3b/Darth_Vader_display_large.jpg'
+            ];
+        }
+        if (productId === 'ghost') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/DSM00000000379227/design/2024-03-18_d47obgdonzut.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/DSM00000000379227/design/2024-03-18_jbi4bj1kn3cq.png?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/DSM00000000379227/design/2024-03-18_d5ddvgwfnggz.png?x-oss-process=image/resize,w_1920/format,webp'
+            ];
+        }
+        if (productId === 'poop') {
+            images = [
+                'https://cdn.thingiverse.com/renders/30/e2/12/32/86/IMG_4140_display_large.JPG',
+                'https://cdn.thingiverse.com/renders/ae/e7/05/9c/01/poopemojikeychain_display_large.jpg'
+            ];
+        }
+        if (productId === 'racketV2') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/US7e5a5415009369/design/2023-12-16_c2eb44e17a56a.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/US7e5a5415009369/design/2023-12-16_d20db936f8929.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
 
 
 

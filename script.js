@@ -305,4 +305,6 @@
             if (currentImageIndex >= images.length) currentImageIndex = 0;
             if (currentImageIndex < 0) currentImageIndex = images.length - 1;
             showImage(currentImageIndex);
+            }
+
       

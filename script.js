@@ -345,5 +345,29 @@
                 alert("Не вдалося відправити замовлення!");
             });
         }
-        
+        async function confirmOrder() {
+    const username = "username_here";  // Отримайте ім'я користувача з форми або іншого джерела
+    const items = cart.map(item => ({ name: item.item, quantity: item.quantity }));
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    try {
+        const response = await fetch('https://mshoptest.onrender.com/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ items, total, username })
+        });
+
+        if (response.ok) {
+            alert('Замовлення підтверджено і відправлено!');
+        } else {
+            alert('Виникла помилка при підтвердженні замовлення.');
+        }
+    } catch (error) {
+        console.error('Помилка:', error);
+        alert('Помилка під час надсилання замовлення.');
+    }
+}
+
                

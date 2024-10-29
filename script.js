@@ -291,6 +291,23 @@
                 'https://makerworld.bblmw.com/makerworld/model/US7275b0b14b2b1b/design/2023-08-16_xf0l69nfg8el.jpg?x-oss-process=image/resize,w_1000/format,webp'
             ];
         }
+        if (productId === 'phone1') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/USa42ed4537b10b2/design/2024-10-13_af93788ad38c6.jpg?x-oss-process=image/resize,w_1920/format,webp'
+            ];
+        }
+        if (productId === 'phoneua1') {
+            images = [
+                'https://cdn.thingiverse.com/assets/c6/ab/0e/39/cb/large_display_f6f929db-3649-4e84-9564-8e3c8afa0de3.png'
+            ];
+        }
+        if (productId === 'phoneua2') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/UScbe8847eb804c4/design/2024-05-20_382680e9f0a028.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/UScbe8847eb804c4/design/2024-05-20_48db447d064d4.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/UScbe8847eb804c4/design/2024-05-20_5a8aef56e3cb08.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
 
 
 

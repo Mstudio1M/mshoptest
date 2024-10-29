@@ -279,7 +279,7 @@
             ];
         }
         }
-        if (productId === 'racketV2') {
+        if (productId === 'dragon1') {
             images = [
                 'https://makerworld.bblmw.com/makerworld/model/US7a7338869a86c2/design/2024-08-20_eb269e1fbdce.jpg?x-oss-process=image/resize,w_1000/format,webp',
                 'https://makerworld.bblmw.com/makerworld/model/US7a7338869a86c2/design/2024-08-20_a39a381181926.jpg?x-oss-process=image/resize,w_1000/format,webp'

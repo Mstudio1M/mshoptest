@@ -278,6 +278,13 @@
                 'https://makerworld.bblmw.com/makerworld/model/US7e5a5415009369/design/2023-12-16_d20db936f8929.jpg?x-oss-process=image/resize,w_1000/format,webp'
             ];
         }
+        }
+        if (productId === 'racketV2') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/US7a7338869a86c2/design/2024-08-20_eb269e1fbdce.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/US7a7338869a86c2/design/2024-08-20_a39a381181926.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
 
 
 

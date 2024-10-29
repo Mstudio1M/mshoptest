@@ -306,4 +306,44 @@
             if (currentImageIndex < 0) currentImageIndex = images.length - 1;
             showImage(currentImageIndex);
         }
-       
+        function confirmOrder() {
+            if (cart.length === 0) {
+                alert("Кошик порожній!");
+                return;
+            }
+        
+            // Створюємо повідомлення із замовленням
+            const orderItems = cart.map(item => `${item.item} - ${item.quantity} шт (ціна: ${item.price * item.quantity} грн)`);
+            const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        
+            const orderMessage = `
+                Нове замовлення:
+                ${orderItems.join("\n")}
+                Загальна сума: ${totalPrice} грн
+            `;
+        
+            // Виконуємо запит на сервер для відправки повідомлення до Telegram бота
+            fetch('/send-to-bot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: orderMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Замовлення підтверджено та відправлено!");
+                    cart = []; // Очищуємо кошик після підтвердження
+                    updateCart(); // Оновлюємо кошик
+                } else {
+                    alert("Помилка при відправці замовлення!");
+                }
+            })
+            .catch(error => {
+                console.error("Помилка:", error);
+                alert("Не вдалося відправити замовлення!");
+            });
+        }
+        
+               

@@ -285,6 +285,13 @@
                 'https://makerworld.bblmw.com/makerworld/model/US7a7338869a86c2/design/2024-08-20_a39a381181926.jpg?x-oss-process=image/resize,w_1000/format,webp'
             ];
         }
+        if (productId === 'octopus') {
+            images = [
+                'https://makerworld.bblmw.com/makerworld/model/US7275b0b14b2b1b/design/2023-08-16_b0qekzgmoxkm.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/US7275b0b14b2b1b/design/2023-08-16_68wwjqr9j9b0.jpg?x-oss-process=image/resize,w_1000/format,webp',
+                'https://makerworld.bblmw.com/makerworld/model/US7275b0b14b2b1b/design/2023-08-16_xf0l69nfg8el.jpg?x-oss-process=image/resize,w_1000/format,webp'
+            ];
+        }
 
 
 

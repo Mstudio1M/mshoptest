@@ -336,5 +336,64 @@
             if (currentImageIndex < 0) currentImageIndex = images.length - 1;
             showImage(currentImageIndex);
             }
-
-      
+        // Отримуємо товари з localStorage
+        function getCartData() {
+            const cartData = localStorage.getItem('cart');
+            return cartData ? JSON.parse(cartData) : [];
+        }
+        
+        // Формуємо повідомлення і відправляємо замовлення через Telegram API
+        function confirmOrder() {
+            const cartItems = getCartData();
+            if (cartItems.length === 0) {
+                alert('Ваш кошик порожній!');
+                return;
+            }
+        
+            // Формуємо текст повідомлення
+            let message = 'Нове замовлення:\n';
+            let total = 0;
+        
+            cartItems.forEach(item => {
+                message += `Товар: ${item.name}\nЦіна: ${item.price} грн\nКількість: ${item.quantity}\n\n`;
+                total += item.price * item.quantity;
+            });
+        
+            message += `Загальна сума: ${total} грн`;
+        
+            // Налаштування для Telegram API
+            const telegramBotToken = '7613250198:AAFdiSam6sgR_IY5J26VY7sNB8l5e3YJwLs';
+            const chatId = '5081289753';
+            const telegramApiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+        
+            // Відправка POST-запиту до Telegram
+            fetch(telegramApiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert('Замовлення підтверджено! Очікуйте на відповідь.');
+                    localStorage.removeItem('cart');  // Очищаємо кошик після підтвердження
+                } else {
+                    alert('Помилка при надсиланні замовлення. Спробуйте ще раз.');
+                }
+            })
+            .catch(error => {
+                console.error('Помилка:', error);
+                alert('Не вдалося відправити замовлення. Перевірте інтернет-з’єднання.');
+            });
+        }
+        
+        // Додаємо обробник події на кнопку "Підтвердити замовлення"
+        document.getElementById('confirmOrderButton').addEventListener('click', confirmOrder);
+        
+        
+              

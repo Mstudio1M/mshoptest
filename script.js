@@ -336,4 +336,37 @@
             if (currentImageIndex < 0) currentImageIndex = images.length - 1;
             showImage(currentImageIndex);
             }
-        
+        function submitOrder() {
+        const username = document.getElementById("telegram-username").value;
+        if (!username) {
+            alert("Будь ласка, введіть ваш нік у Telegram.");
+            return;
+        }
+    
+        const orderDetails = {
+            items: cart, // Список вибраних товарів
+            username: username
+        };
+    
+        fetch('https://api.telegram.org/bot7613250198:AAFdiSam6sgR_IY5J26VY7sNB8l5e3YJwLs/sendMessage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: '<YOUR_CHAT_ID>', // Заміни на свій чат ID
+                text: `Нове замовлення: ${JSON.stringify(orderDetails)}`
+            })
+        }).then(response => response.json())
+          .then(data => {
+              alert("Замовлення надіслано успішно!");
+              cart = []; // Очищення кошика
+              document.getElementById("order-section").style.display = "none";
+          })
+          .catch(error => {
+              console.error("Помилка при відправці замовлення:", error);
+              alert("Не вдалося надіслати замовлення. Спробуйте ще раз.");
+          });
+    }
+    
+            

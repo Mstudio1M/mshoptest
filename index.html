@@ -34,6 +34,13 @@
     <h2>Ваш кошик</h2>
     <div id="cart-items"></div>
     <p id="total-price">Загальна сума: 0 грн</p>
+        <!-- Форма для оформлення замовлення -->
+    <div id="order-section" style="display: none;">
+        <h3>Оформити замовлення</h3>
+        <label for="telegram-username">Ваш нік у Telegram:</label>
+        <input type="text" id="telegram-username" placeholder="@example" required>
+        <button onclick="submitOrder()">Замовити</button>
+    </div>
 </div>
 <div id="imageModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
@@ -312,13 +319,7 @@
     </div>
 </div>
 
-    <!-- Форма для оформлення замовлення -->
-<div id="order-section" style="display: none;">
-    <h3>Оформити замовлення</h3>
-    <label for="telegram-username">Ваш нік у Telegram:</label>
-    <input type="text" id="telegram-username" placeholder="@example" required>
-    <button onclick="submitOrder()">Замовити</button>
-</div>
+
 
 
     <script src="script.js"></script>

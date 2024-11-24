@@ -354,7 +354,7 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                chat_id: '<YOUR_CHAT_ID>', // Заміни на свій чат ID
+                chat_id: '<5081289753>', // Заміни на свій чат ID
                 text: `Нове замовлення: ${JSON.stringify(orderDetails)}`
             })
         }).then(response => response.json())

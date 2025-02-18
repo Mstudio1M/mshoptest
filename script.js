@@ -357,9 +357,14 @@
     
     function generateProducts(categoryId) {
         const categoryDiv = document.getElementById(categoryId);
-        if (!categoryDiv) return; // Якщо категорії немає — виходимо
+        if (!categoryDiv) {
+            console.error(`Помилка: категорія '${categoryId}' не знайдена!`);
+            return;
+        }
     
-        categoryDiv.innerHTML = ""; // Очистка перед додаванням
+        console.log(`Генерація товарів для категорії: ${categoryId}`);
+        
+        categoryDiv.innerHTML = ""; // Очищаємо перед додаванням товарів
     
         const productGrid = document.createElement("div");
         productGrid.classList.add("product-grid");
@@ -370,7 +375,7 @@
             productDiv.style.width = "calc(50% - 20px)";
     
             const imageUrl = product.image === "Baseimage" ? baseImage : product.image;
-            
+    
             productDiv.innerHTML = `
                 <img src="${imageUrl}" alt="${product.name}" onclick="openModal('${product.id}')">
                 <h3>${product.name}</h3>
@@ -381,5 +386,7 @@
         });
     
         categoryDiv.appendChild(productGrid);
+        console.log(`Додано ${products.length} товарів у категорію '${categoryId}'`);
     }
+
 

@@ -374,9 +374,9 @@
         let minPrice = parseFloat(document.getElementById("min-price").value) || 0;
         let maxPrice = parseFloat(document.getElementById("max-price").value) || Infinity;
         
-        let filteredProducts = products.filter(product => product.price >= minPrice && product.price <= maxPrice);
+        let filteredProducts = products.filter(cartItem.item => cartItem.price >= minPrice && product.price <= maxPrice);
         
-        let productContainer = document.getElementById("product-list");
+        let productContainer = document.getElementById("cartItem");
         productContainer.innerHTML = "";
         
         if (filteredProducts.length === 0) {

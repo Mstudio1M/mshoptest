@@ -338,6 +338,14 @@
             }
 
 
+    document.addEventListener("DOMContentLoaded", () => {
+        if (document.getElementById("keychains")) {
+            generateProducts("keychains");
+        } else {
+            console.error("Категорія 'keychains' не знайдена!");
+        }
+    });
+
     const baseImage = "https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-10_1d26740c93529.jpg";
     
     const products = [
@@ -349,15 +357,18 @@
     
     function generateProducts(categoryId) {
         const categoryDiv = document.getElementById(categoryId);
+        if (!categoryDiv) return; // Якщо категорії немає — виходимо
+    
+        categoryDiv.innerHTML = ""; // Очистка перед додаванням
+    
         const productGrid = document.createElement("div");
         productGrid.classList.add("product-grid");
-        
+    
         products.forEach(product => {
             const productDiv = document.createElement("div");
             productDiv.classList.add("product");
             productDiv.style.width = "calc(50% - 20px)";
     
-            // Якщо image === "Baseimage", використовуємо baseImage
             const imageUrl = product.image === "Baseimage" ? baseImage : product.image;
             
             productDiv.innerHTML = `
@@ -371,8 +382,4 @@
     
         categoryDiv.appendChild(productGrid);
     }
-    
-    document.addEventListener("DOMContentLoaded", () => {
-        generateProducts("keychains"); // Генерація товарів у категорії брелки
-    });
 

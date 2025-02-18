@@ -336,37 +336,43 @@
             if (currentImageIndex < 0) currentImageIndex = images.length - 1;
             showImage(currentImageIndex);
             }
-        function submitOrder() {
-        const username = document.getElementById("telegram-username").value;
-        if (!username) {
-            alert("Будь ласка, введіть ваш нік у Telegram.");
-            return;
-        }
-    
-        const orderDetails = {
-            items: cart, // Список вибраних товарів
-            username: username
-        };
-    
-        fetch('https://api.telegram.org/bot7613250198:AAFdiSam6sgR_IY5J26VY7sNB8l5e3YJwLs/sendMessage', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                chat_id: '<5081289753>', // Заміни на свій чат ID
-                text: `Нове замовлення: ${JSON.stringify(orderDetails)}`
-            })
-        }).then(response => response.json())
-          .then(data => {
-              alert("Замовлення надіслано успішно!");
-              cart = []; // Очищення кошика
-              document.getElementById("order-section").style.display = "none";
-          })
-          .catch(error => {
-              console.error("Помилка при відправці замовлення:", error);
-              alert("Не вдалося надіслати замовлення. Спробуйте ще раз.");
-          });
-    }
 
+
+    const baseImage = "https://makerworld.bblmw.com/makerworld/model/US6faea0f1f802ec/design/2024-03-10_1d26740c93529.jpg";
+    
+    const products = [
+        { id: "photoaparat", name: "Фотоапарат", price: 20, image: "Baseimage" },
+        { id: "Molot tora", name: "Молот Тора", price: 15, image: "Baseimage" },
+        { id: "batman", name: "Batman", price: 15, image: "Baseimage" },
+        { id: "Creaper", name: "Кріпер", price: 25, image: "Baseimage" },
+    ];
+    
+    function generateProducts(categoryId) {
+        const categoryDiv = document.getElementById(categoryId);
+        const productGrid = document.createElement("div");
+        productGrid.classList.add("product-grid");
+        
+        products.forEach(product => {
+            const productDiv = document.createElement("div");
+            productDiv.classList.add("product");
+            productDiv.style.width = "calc(50% - 20px)";
+    
+            // Якщо image === "Baseimage", використовуємо baseImage
+            const imageUrl = product.image === "Baseimage" ? baseImage : product.image;
             
+            productDiv.innerHTML = `
+                <img src="${imageUrl}" alt="${product.name}" onclick="openModal('${product.id}')">
+                <h3>${product.name}</h3>
+                <p>Ціна: ${product.price} грн</p>
+                <button onclick="addToCart('${product.name}', ${product.price})">Додати в корзину</button>
+            `;
+            productGrid.appendChild(productDiv);
+        });
+    
+        categoryDiv.appendChild(productGrid);
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        generateProducts("keychains"); // Генерація товарів у категорії брелки
+    });
+

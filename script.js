@@ -369,4 +369,22 @@
           });
     }
     
+    // Функція для фільтрації товарів за ціною
+    function filterByPrice() {
+        let minPrice = parseFloat(document.getElementById("min-price").value) || 0;
+        let maxPrice = parseFloat(document.getElementById("max-price").value) || Infinity;
+        
+        let filteredProducts = products.filter(product => product.price >= minPrice && product.price <= maxPrice);
+        
+        let productContainer = document.getElementById("product-list");
+        productContainer.innerHTML = "";
+        
+        if (filteredProducts.length === 0) {
+            productContainer.innerHTML = "<p>Немає товару в цій категорії</p>";
+        } else {
+            filteredProducts.forEach(product => {
+                productContainer.innerHTML += `<div class='product'>${product.name} - ${product.price} грн</div>`;
+            });
+        }
+    }
             

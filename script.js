@@ -374,7 +374,7 @@
         let minPrice = parseFloat(document.getElementById("min-price").value) || 0;
         let maxPrice = parseFloat(document.getElementById("max-price").value) || Infinity;
         
-        let filteredProducts = products.filter(cartItem.item => cartItem.price >= minPrice && product.price <= maxPrice);
+        let filteredProducts = products.filter(cartItem.item => cartItem.price >= minPrice && cartItem.price <= maxPrice);
         
         let productContainer = document.getElementById("cartItem");
         productContainer.innerHTML = "";
@@ -382,8 +382,8 @@
         if (filteredProducts.length === 0) {
             productContainer.innerHTML = "<p>Немає товару в цій категорії</p>";
         } else {
-            filteredProducts.forEach(product => {
-                productContainer.innerHTML += `<div class='product'>${product.name} - ${product.price} грн</div>`;
+            filteredProducts.forEach(cartItem => {
+                productContainer.innerHTML += `<div class='cartItem'>${cartItem.name} - ${cartItem.price} грн</div>`;
             });
         }
     }

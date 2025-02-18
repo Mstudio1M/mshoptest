@@ -78,18 +78,24 @@
             justify-content: center;
         }
 
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px; /* Додає відступи між товарами */
+        }
+        
         .product {
+            width: calc(50% - 10px); /* Чітко 2 товари в ряд */
+            box-sizing: border-box;
             background-color: #1a1a1a;
             border: 2px solid #00ffcc;
             padding: 20px;
-            margin: 10px;
             border-radius: 8px;
-            box-shadow: 0 0 15px #00ffcc;
             text-align: center;
             transition: box-shadow 0.3s ease, transform 0.3s ease;
-            width: calc(50% - 40px); /* Два товари в ряд */
-            box-sizing: border-box;
         }
+
 
         .product img {
             width: 150px;
@@ -125,16 +131,6 @@
             transform: translateY(-3px);
         }
 
-        .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .product {
-            width: calc(50% - 20px); /* Два товари в ряд */
-            box-sizing: border-box;
-            margin: 10px; /* Додаємо відступи між товарами */
-        }
 
         .category {
             display: none;

@@ -366,13 +366,16 @@
         
         categoryDiv.innerHTML = ""; // Очищаємо перед додаванням товарів
     
-        const productGrid = document.createElement("div");
-        productGrid.classList.add("product-grid");
+        let productGrid = categoryDiv.querySelector(".product-grid");
+        if (!productGrid) {
+            productGrid = document.createElement("div");
+            productGrid.classList.add("product-grid");
+            categoryDiv.appendChild(productGrid);
+        }
     
         products.forEach(product => {
             const productDiv = document.createElement("div");
             productDiv.classList.add("product");
-            productDiv.style.width = "calc(50% - 20px)";
     
             const imageUrl = product.image === "Baseimage" ? baseImage : product.image;
     
@@ -385,8 +388,8 @@
             productGrid.appendChild(productDiv);
         });
     
-        categoryDiv.appendChild(productGrid);
         console.log(`Додано ${products.length} товарів у категорію '${categoryId}'`);
     }
+
 
 
